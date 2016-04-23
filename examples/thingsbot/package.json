@@ -1,0 +1,14 @@
+{
+  "name": "thingsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "thingsbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alberto Coscia",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "superagent": "^1.8.3"
+  }
+}
