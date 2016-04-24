@@ -278,7 +278,7 @@ function results(objects) {
     var result = [];
 
     objects.forEach((object) => {
-        if (object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
+        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
             promises.push(entity(object.id).then((data) => {
                 return statemets(data).then((data) => {
                     result.push(
@@ -321,9 +321,11 @@ bot.on('inline_query', (query) => {
 
                 })
                 .catch((err) => {
-                    console.log(result);
-                    console.log(err);
+                    //console.log(err);
                     console.log(err.stack)
+                    result.forEach((r) => {
+                        if (!r.input_message_content.message_text) console.log(r)
+                    })
                 });
         });
     });
