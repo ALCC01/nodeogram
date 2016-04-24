@@ -7,7 +7,7 @@ bot = new Bot(config.token);
 bot.init();
 
 function search(query) {
-    return bot.get('https://www.wikidata.org/w/api.php', {action: "wbsearchentities", search: query, language: "en", format: "json", limit: 14}).then((res) => {
+    return bot.get('https://www.wikidata.org/w/api.php', {action: "wbsearchentities", search: query, language: "en", format: "json", limit: 20}).then((res) => {
         return(res.body.search)
     });
 }
@@ -184,15 +184,18 @@ function message(data) {
         return "";
     }
     try {
+        var urls = ["website", "stackexchange", "streaming"];
+        urls.forEach((prop) => {
+            if (data._statements[prop]) {
+                data._statements[prop] = data._statements[prop].replace(/ /g, '_');
+                data._statements[prop] = data._statements[prop].replace(/\(/g, '%28');
+                data._statements[prop] = data._statements[prop].replace(/\)/g, '%29');
+            }
+        });
         if (data.sitelinks.enwiki) {
             data.sitelinks.enwiki.link = data.sitelinks.enwiki.title.replace(/ /g, '_');
             data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\(/g, '%28');
             data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\)/g, '%29');
-        }
-        if (data._statements.website) {
-            data._statements.website = data._statements.website.replace(/ /g, '_');
-            data._statements.website = data._statements.website.replace(/\(/g, '%28');
-            data._statements.website = data._statements.website.replace(/\)/g, '%29');
         }
         var text = `*${data.labels.en.value}*\n_${data.descriptions.en.value ? data.descriptions.en.value : data.title + " on WikiData"}_\n\n`;
         if (data._statements.is) text += `${data.labels.en.value} is a *${data._statements.is.join(", ")}*\n`;
@@ -275,7 +278,7 @@ function results(objects) {
     var result = [];
 
     objects.forEach((object) => {
-        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
+        if (object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
             promises.push(entity(object.id).then((data) => {
                 return statemets(data).then((data) => {
                     result.push(
@@ -313,7 +316,7 @@ bot.on('inline_query', (query) => {
     search(query.query).then((objects) => {
 
         results(objects).then((result) => {
-            query.answer(result, {cache_time: 0})
+            query.answer(result, {cache_time: 300000})
                 .then((res) => {
 
                 })
@@ -323,83 +326,14 @@ bot.on('inline_query', (query) => {
                     console.log(err.stack)
                 });
         });
-
-        /*for (var x = 0; x > objects.length; x++) {
-            var object = objects[x];
-            if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
-                entity(object.id).then((data) => {
-                    statemets(data).then((data) => {
-                        results.push(
-                            new InlineQueryResultArticle(
-                                object.id,
-                                object.label,
-                                {
-                                    message_text: message(data),
-                                    parse_mode: 'Markdown',
-                                    disable_web_page_preview: true
-                                },
-                                {
-                                    url: object.concepturi,
-                                    description: object.description ? object.description : object.title + " on WikiData"
-                                }
-                            )
-                        );
-                    });
-                });
-            }
-        }
-        query.answer(results, {cache_time: 0})
-            .then((res) => {
-                console.log(results)
-                console.log("send")
-            })
-            .catch((err) => {
-                console.log(err)
-            });*/
-
-        /*console.log(objects[6])
-        objects.forEach((object) => {
-            if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
-                entity(object.id).then((data) => {
-                    statemets(data).then((data) => {
-                        data.sitelinks.enwiki.link = data.sitelinks.enwiki.title.replace(/ /g, '_');
-                        data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\(/g, '%28');
-                        data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\)/g, '%29');
-                        results.push(
-                            new InlineQueryResultArticle(
-                                object.id,
-                                object.label,
-                                {
-                                    message_text: message(data),
-                                    /*message_text: `*${object.label}*
-                                     _${object.description ? object.description : object.title + " on WikiData"}_\n
-                                     ${data._statements.is ? `${object.label} is a *${data._statements.is}*\n`: ""}${data._statements.part_of ? `Part of *${data._statements.part_of}*\n` : ""}${data._statements.occupation ? `Works as a *${data._statements.occupation}*\n` : ""}${data._statements.magnum_opus ? `Notable work: *${data._statements.magnum_opus}*` : ""}
-                                     ${data._statements.officially_named ? `Officially named *${data._statements.officially_named}*\n` : ""}${data._statements.invented_by ? `Invented or discovered by *${data._statements.invented_by}*\n` : ""}${data._statements.born_on ? `Birth date: *${data._statements.born_on.toDateString()}*\n` : ""}${data._statements.birth_place ? `Birth place: *${data._statements.birth_place}*\n` : ""}${data._statements.death_place ? `Death place: *${data._statements.death_place}*\n` : ""}${data._statements.death_manner ? `Died because of *${data._statements.death_manner}*\n` : ""}${data._statements.killer ? `Killed by *${data._statements.killer}*\n` : ""}${data._statements.citizenship ? `Citizen of *${data._statements.citizenship}*\n` : ""}${data._statements.religion ? `Religion: *${data._statements.religion}*\n` : ""}${data._statements.version ? `Latest version: *${data._statements.version}*\n` : ""}${data._statements.license ? `Licensed under *${data._statements.license}*\n` : ""}${data._statements.publisher ? `Published by *${data._statements.publisher}*\n` : ""}
-                                     [Wikipedia Article](https://en.wikipedia.org/wiki/${data.sitelinks.enwiki.link})`,
-                                    parse_mode: 'Markdown',
-                                    disable_web_page_preview: true
-                                },
-                                {
-                                    url: object.concepturi,
-                                    description: object.description ? object.description : object.title + " on WikiData"
-                                }
-                            )
-                        );
-                    });
-                });
-            }
-            i++;
-            if (i == objects.length - 1) {
-                query.answer(results, {cache_time: 0})
-                    .then((res) => {
-                        console.log(results)
-                        console.log("send")
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-            }
-            console.log(i, objects.length, objects.length - 1)
-        });*/
     });
+});
+
+bot.command('start', 'Start this bot', (args, message) => {
+    message.reply(`Hi there, I'm ThingsBot.
+
+I can search things for you in the structured data universe. I'm powered by the magic of Wikidata, a project of the Wikimedia Foundation (the guys from Wikipedia) that provides free structured data under CC0.
+You can start looking up things via inline queries, using \`@thingybot [you query]\`
+
+If any error occurs or you have a suggestion, you can query my owner @ALCC01 (https://albertocoscia.me). My userpic is released under CC BY-SA as it contains the Wikidata logo`, {parse_mode: "Markdown"})
 });
