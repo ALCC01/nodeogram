@@ -313,15 +313,16 @@ bot.on('inline_query', (query) => {
         return;
     }
     console.log(`New query '${query.query}' from ${query.from.username}`);
+    console.time(query.id);
     search(query.query).then((objects) => {
-
         results(objects).then((result) => {
             query.answer(result, {cache_time: 300000})
                 .then((res) => {
-
+                    console.timeEnd(query.id);
                 })
                 .catch((err) => {
                     //console.log(err);
+                    console.timeEnd(query.id);
                     console.log(err.stack)
                     result.forEach((r) => {
                         if (!r.input_message_content.message_text) console.log(r)
