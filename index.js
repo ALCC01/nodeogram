@@ -10,4 +10,4 @@ var Bot = module.exports.Bot = require('./lib/Bot.js'),
     ChosenInlineResult = module.exports.ChosenInlineResult = require('./lib/ChosenInlineResult.js'),
     InlineQueryResultArticle = module.exports.InlineQueryResultArticle = require('./lib/InlineQueryResultArticle.js'),
     InlineQueryResultLocation = module.exports.InlineQueryResultLocation = require('./lib/InlineQueryResultLocation.js'),
-    ReplyKeyboard = module.exports.ReplyKeyboard = require('./lib/ReplyKeyboard.js');
+    Keyboard = module.exports.Keyboard = require('./lib/Keyboard.js');
