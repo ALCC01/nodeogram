@@ -197,7 +197,7 @@ function message(data) {
             data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\(/g, '%28');
             data.sitelinks.enwiki.link = data.sitelinks.enwiki.link.replace(/\)/g, '%29');
         }
-        var text = `✳ *${data.labels.en.value}*\n▶ _${data.descriptions.en.value ? data.descriptions.en.value : data.title + " on WikiData"}_\n\n`;
+        var text = `*${data.labels.en.value}*\n_${data.descriptions.en.value ? data.descriptions.en.value : data.title + " on WikiData"}_\n\n`;
         if (data._statements.is) text += `${data.labels.en.value} is a *${data._statements.is.join(", ")}*\n`;
         if (data._statements.part_of) text += `Part of *${data._statements.part_of}*\n`;
         if (data._statements.occupation) text += `Works as a *${data._statements.occupation}*\n`;
@@ -259,11 +259,11 @@ function message(data) {
         if (data._statements.end) text += `Ending date: *${data._statements.end}*\n`;
 
 
-        if (data._statements.streaming) text += `📡 [Available via streaming](${data._statements.streaming})\n`;
-        if (data._statements.stackexchange) text += `☝ [StackExchange Tag](${data._statements.stackexchange})\n`;
-        if (data._statements.bugs) text += `🐛 [Bug Tracking](${data._statements.bugs})\n`;
-        if (data._statements.website) text += `🌍 [Official Website](${data._statements.website})\n`;
-        if (data.sitelinks.enwiki) text += `\n📚 [Wikipedia Article](https://en.wikipedia.org/wiki/${data.sitelinks.enwiki.link})`;
+        if (data._statements.streaming) text += `[Available via streaming](${data._statements.streaming})\n`;
+        if (data._statements.stackexchange) text += `[StackExchange Tag](${data._statements.stackexchange})\n`;
+        if (data._statements.bugs) text += `[Bug Tracking](${data._statements.bugs})\n`;
+        if (data._statements.website) text += `[Official Website](${data._statements.website})\n`;
+        if (data.sitelinks.enwiki) text += `\n[Wikipedia Article](https://en.wikipedia.org/wiki/${data.sitelinks.enwiki.link})`;
         text += `\n#${data.id} on Wikidata`;
 
         return text;
@@ -285,7 +285,7 @@ function results(objects, chat) {
                         result.push({
                             id: object.id,
                             label: object.label,
-                            is: object.description ? object.description : object.title + " on WikiData"
+                            is: data._statements.is ? data._statements.is[0] || "" : ""
                         })
                     } else {
                         result.push(
@@ -322,22 +322,17 @@ bot.on('message', (message) => {
     console.time(message.message_id);
     search(message.text, 10).then((objects) =>{
         results(objects, true).then((results) => {
-            if (results.length <= 1) {
-                message.reply("❗ I'm sorry but it looks like you are searching for something that hasn't been invented yet or that's hiding from you.");
-                console.timeEnd(message.message_id);
-            } else {
-                var i = 1;
-                var list = "❓ Which one of these entries are you looking for?\n\n";
-                var keyboard = new nodeogram.Keyboard();
-                results.forEach((result) => {
-                    list += `${i}\u20E3 *${result.label}* - ${result.is}\n`;
-                    keyboard.addButton(0, i - 1, {text: "" + i, callback_data: result.id});
-                    i++;
-                });
-                keyboard.toInline();
-                message.reply(list, {reply_markup: keyboard, parse_mode: 'Markdown'})
-                console.timeEnd(message.message_id);
-            }
+            var i = 1;
+            var list = "";
+            var keyboard = new nodeogram.Keyboard();
+            results.forEach((result) => {
+            list += `⃣${i}\u20E3 *${result.label}* - ${result.is}\n`;
+                keyboard.addButton(0, i-1, {text: ""+i, callback_data: result.id});
+                i++;
+            });
+            keyboard.toInline();
+            message.reply(list, {reply_markup: keyboard, parse_mode: 'Markdown'})
+            console.timeEnd(message.message_id);
         })
     });
 });
