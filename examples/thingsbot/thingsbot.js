@@ -6,8 +6,8 @@ const nodeogram = require('../../index'),
 bot = new Bot(config.token);
 bot.init();
 
-function search(query) {
-    return bot.get('https://www.wikidata.org/w/api.php', {action: "wbsearchentities", search: query, language: "en", format: "json", limit: 20}).then((res) => {
+function search(query, limit) {
+    return bot.get('https://www.wikidata.org/w/api.php', {action: "wbsearchentities", search: query, language: "en", format: "json", limit: limit || 20}).then((res) => {
         return(res.body.search)
     });
 }
@@ -273,29 +273,37 @@ function message(data) {
     }
 }
 
-function results(objects) {
+function results(objects, chat) {
     var promises = [];
     var result = [];
 
     objects.forEach((object) => {
-        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
+        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:") && !object.label.startsWith("Wikimedia")) {
             promises.push(entity(object.id).then((data) => {
                 return statemets(data).then((data) => {
-                    result.push(
-                        new InlineQueryResultArticle(
-                            object.id,
-                            object.label,
-                            {
-                                message_text: message(data),
-                                parse_mode: 'Markdown',
-                                disable_web_page_preview: true
-                            },
-                            {
-                                url: object.concepturi,
-                                description: object.description ? object.description : object.title + " on WikiData"
-                            }
-                        )
-                    );
+                    if (chat) {
+                        result.push({
+                            id: object.id,
+                            label: object.label,
+                            is: data._statements.is ? data._statements.is[0] || "" : ""
+                        })
+                    } else {
+                        result.push(
+                            new InlineQueryResultArticle(
+                                object.id,
+                                object.label,
+                                {
+                                    message_text: message(data),
+                                    parse_mode: 'Markdown',
+                                    disable_web_page_preview: true
+                                },
+                                {
+                                    url: object.concepturi,
+                                    description: object.description ? object.description : object.title + " on WikiData"
+                                }
+                            )
+                        );
+                    }
                 });
             }));
         }
@@ -307,6 +315,39 @@ function results(objects) {
         console.log(err);
     })
 }
+
+bot.on('message', (message) => {
+    if (message.commands.length > 0) return;
+    console.log(`New message '${message.text}' from ${message.from.username}`);
+    console.time(message.message_id);
+    search(message.text, 10).then((objects) =>{
+        results(objects, true).then((results) => {
+            var i = 1;
+            var list = "";
+            var keyboard = new nodeogram.Keyboard();
+            results.forEach((result) => {
+                list += `${i}) *${result.label}* - ${result.is}\n`;
+                keyboard.addButton(0, i-1, {text: ""+i, callback_data: result.id});
+                i++;
+            });
+            keyboard.toInline();
+            message.reply(list, {reply_markup: keyboard, parse_mode: 'Markdown'})
+            console.timeEnd(message.message_id);
+        })
+    });
+});
+
+bot.on('callback_query', (query) => {
+    console.log(`New callback query '${query.data}' from ${query.from.username}`);
+    console.time(query.id);
+    entity(query.data).then(entity => statemets(entity)
+        .then((data) => {
+            var msg = message(data);
+            query.message.editText(msg, false, {parse_mode: 'Markdown', disable_web_page_preview: true});
+            console.timeEnd(query.id)
+        })
+    )
+});
 
 bot.on('inline_query', (query) => {
     if (query.query == '') {
@@ -336,7 +377,9 @@ bot.command('start', 'Start this bot', (args, message) => {
     message.reply(`Hi there, I'm ThingsBot.
 
 I can search things for you in the structured data universe. I'm powered by the magic of Wikidata, a project of the Wikimedia Foundation (the guys from Wikipedia) that provides free structured data under CC0.
+
 You can start looking up things via inline queries, using \`@thingybot [you query]\`
+If you are forever alone or you don't want to flood other chats, you can just write me your query and I will answer you with the best results I can find.
 
 If any error occurs or you have a suggestion, you can query my owner @ALCC01 (https://albertocoscia.me). My userpic is released under CC BY-SA as it contains the Wikidata logo`, {parse_mode: "Markdown"})
 });
