@@ -10,4 +10,5 @@ var Bot = module.exports.Bot = require('./lib/Bot.js'),
     ChosenInlineResult = module.exports.ChosenInlineResult = require('./lib/ChosenInlineResult.js'),
     InlineQueryResultArticle = module.exports.InlineQueryResultArticle = require('./lib/InlineQueryResultArticle.js'),
     InlineQueryResultLocation = module.exports.InlineQueryResultLocation = require('./lib/InlineQueryResultLocation.js'),
-    Keyboard = module.exports.Keyboard = require('./lib/Keyboard.js');
+    Keyboard = module.exports.Keyboard = require('./lib/Keyboard.js'),
+    ChatMember = module.exports.ChatMember = require('./lib/ChatMember.js');
