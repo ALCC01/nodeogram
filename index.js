@@ -12,3 +12,20 @@ var Bot = module.exports.Bot = require('./lib/Bot.js'),
     InlineQueryResultLocation = module.exports.InlineQueryResultLocation = require('./lib/InlineQueryResultLocation.js'),
     Keyboard = module.exports.Keyboard = require('./lib/Keyboard.js'),
     ChatMember = module.exports.ChatMember = require('./lib/ChatMember.js');
+
+const bot = new Bot("121919558:AAHT7fH1QlAYGNAtQOwvBlwbOodIajou3Y8");
+bot.init();
+
+bot.on('message', (message) => {
+    var keyboard = new Keyboard();
+    keyboard.addButton(0, 0, {text:"sasasasa", callback_data: "uhuhuhuhuhuhu"});
+    keyboard.toInline();
+    message.reply("ygygygygygygy", {reply_markup: keyboard})
+});
+
+bot.on('callback_query', (query) => {
+    query.message.editText("sassa", false, {}).catch((err) => {console.log(err)});
+    query.message.chat.getMembersCount().then((user) => {
+        query.message.chat.unbanMember(query.from)
+    })
+});
