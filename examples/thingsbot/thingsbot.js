@@ -54,7 +54,7 @@ function dateString(date) {
 
 }
 
-function statemets(data) {
+function statements(data) {
     data._statements = {};
     var promises = [];
     var claims = data.claims;
@@ -278,9 +278,9 @@ function results(objects, chat) {
     var result = [];
 
     objects.forEach((object) => {
-        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:") && !object.label.startsWith("Wikimedia")) {
+        if (object.description && object.description != "Wikimedia disambiguation page" && object.description != "Wikipedia disambiguation page" && !object.label.startsWith("Template:")) {
             promises.push(entity(object.id).then((data) => {
-                return statemets(data).then((data) => {
+                return statements(data).then((data) => {
                     if (chat) {
                         result.push({
                             id: object.id,
@@ -320,6 +320,7 @@ bot.on('message', (message) => {
     if (message.commands.length > 0) return;
     console.log(`New message '${message.text}' from ${message.from.username}`);
     console.time(message.message_id);
+    message.chat.sendAction('typing');
     search(message.text, 10).then((objects) =>{
         results(objects, true).then((results) => {
             if (results.length <= 1) {
@@ -345,10 +346,11 @@ bot.on('message', (message) => {
 bot.on('callback_query', (query) => {
     console.log(`New callback query '${query.data}' from ${query.from.username}`);
     console.time(query.id);
-    entity(query.data).then(entity => statemets(entity)
+    entity(query.data).then(entity => statements(entity)
         .then((data) => {
             var msg = message(data);
             query.message.editText(msg, false, {parse_mode: 'Markdown', disable_web_page_preview: true});
+            query.answer("👍 Alright, got it!", true);
             console.timeEnd(query.id)
         })
     )
@@ -356,26 +358,50 @@ bot.on('callback_query', (query) => {
 
 bot.on('inline_query', (query) => {
     if (query.query == '') {
-        return;
-    }
-    console.log(`New query '${query.query}' from ${query.from.username}`);
-    console.time(query.id);
-    search(query.query).then((objects) => {
-        results(objects).then((result) => {
-            query.answer(result, {cache_time: 300000})
-                .then((res) => {
-                    console.timeEnd(query.id);
-                })
-                .catch((err) => {
-                    //console.log(err);
-                    console.timeEnd(query.id);
-                    console.log(err.stack)
-                    result.forEach((r) => {
-                        if (!r.input_message_content.message_text) console.log(r)
+        query.answer([new InlineQueryResultArticle(
+            'wisdom_unofficial',
+            'Wisdom',
+            {
+                message_text: `✳ *Wisdom*
+▶ _Deep understanding of or knowledge of a subject_
+
+Wisdom is a *property*
+
+📚 [Wikipedia Article](https://en.wikipedia.org/wiki/Wisdom)
+#Q799 on Wikidata
+`,
+                parse_mode: 'Markdown',
+                disable_web_page_preview: true
+            },
+            {
+                url: "http://www.wikidata.org/entity/Q799",
+                description: "deep understanding of or knowledge of a subject",
+                hide_url: true,
+                thumb_url: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Rodin_le_penseur.JPG",
+                thumb_height: 1536,
+                thumb_width: 2048
+            }
+        )], {cache_time: 0});
+    } else {
+        console.log(`New query '${query.query}' from ${query.from.username}`);
+        console.time(query.id);
+        search(query.query).then((objects) => {
+            results(objects).then((result) => {
+                query.answer(result, {cache_time: 300000})
+                    .then((res) => {
+                        console.timeEnd(query.id);
                     })
-                });
+                    .catch((err) => {
+                        //console.log(err);
+                        console.timeEnd(query.id);
+                        console.log(err.stack)
+                        result.forEach((r) => {
+                            if (!r.input_message_content.message_text) console.log(r)
+                        })
+                    });
+            });
         });
-    });
+    }
 });
 
 bot.command('start', 'Start this bot', (args, message) => {
