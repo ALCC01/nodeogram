@@ -323,7 +323,7 @@ bot.on('message', (message) => {
     message.chat.sendAction('typing');
     search(message.text, 10).then((objects) =>{
         results(objects, true).then((results) => {
-            if (results.length <= 1) {
+            if (results.length < 1) {
                 message.reply("❗ I'm sorry but it looks like you are searching for something that hasn't been invented yet or that's hiding from you.");
                 console.timeEnd(message.message_id);
             } else {
@@ -340,7 +340,7 @@ bot.on('message', (message) => {
                 console.timeEnd(message.message_id);
             }
         })
-    });
+    })
 });
 
 bot.on('callback_query', (query) => {
