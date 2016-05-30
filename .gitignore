@@ -79,3 +79,6 @@ config.json
 
 # Test script
 test.js
+
+# Test folder
+tests/
