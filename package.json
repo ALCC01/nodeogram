@@ -10,6 +10,13 @@
     "telegram",
     "bot"
   ],
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/ALCC01/nodeogram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ALCC01/nodeogram/issues"
+  },
   "author": "Alberto Coscia",
   "license": "GPL-3.0",
   "dependencies": {
