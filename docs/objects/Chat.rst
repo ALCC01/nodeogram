@@ -3,6 +3,10 @@ Chat
 
 This object represents a Telegram chat.
 
+.. note::
+
+    This object inherits some properties from the corresponding `Telegram object<https://core.telegram.org/bots/api#chat>`_
+
 =================
 Chat(object, bot)
 =================
@@ -132,3 +136,9 @@ sendAction(action)
 * ``action`` <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
 
 Returns a promise that resolves to the response (true on success).
+
+====
+name
+====
+
+<String> *Optional*. The full name of the chat (first name + last name) if available
