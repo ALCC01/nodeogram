@@ -183,7 +183,7 @@ editMessageText = (id, text, inline, options, chat_id)
 * ``id`` <String>
 * ``text`` <String>
 * ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+* ``options`` <Object>
 * ``chat_id`` <String>|<Chat>|<User>
 
 Updates the the specified message in the specified chat and returns a promise that resolves to a :doc:`Message` object
@@ -196,7 +196,7 @@ editMessageCaption = (id, caption, inline, options, chat_id)
 * ``id`` <String>
 * ``caption`` <String>
 * ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+* ``options`` <Object>
 * ``chat_id`` <String>|<Chat>|<User>
 
 Updates the the specified message caption in the specified chat and returns a promise that resolves to a :doc:`Message`
@@ -209,7 +209,7 @@ editMessageReplyMarkup = (id, markup, inline, options, chat_id)
 * ``id`` <String>
 * ``markup`` <Keyboard>
 * ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+* ``options`` <Object>
 * ``chat_id`` <String>|<Chat>|<User>
 
 Updates the the specified message markup in the specified chat and returns a promise that resolves to a :doc:`Message`
