@@ -76,3 +76,10 @@ Nodeogram is released under the GNU General Public License 3.0.
     objects/Bot
     objects/Chat
     objects/User
+    objects/Message
+    objects/CallbackQuery
+    objects/ChosenInlineResult
+    objects/ChatMember
+    objects/File
+    objects/InlineQuery
+    objects/UserProfilePhotos
