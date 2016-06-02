@@ -5,7 +5,7 @@ This object represents a Telegram chat.
 
 .. note::
 
-    This object inherits some properties from the corresponding `Telegram object<https://core.telegram.org/bots/api#chat>`_
+    This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#chat>`_
 
 =================
 Chat(object, bot)

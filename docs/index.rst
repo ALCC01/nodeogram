@@ -74,3 +74,5 @@ Nodeogram is released under the GNU General Public License 3.0.
     :glob:
 
     objects/Bot
+    objects/Chat
+    objects/User
