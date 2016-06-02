@@ -77,6 +77,7 @@ Nodeogram is released under the GNU General Public License 3.0.
     objects/Chat
     objects/User
     objects/Message
+    objects/Keyboard
     objects/CallbackQuery
     objects/ChosenInlineResult
     objects/ChatMember
