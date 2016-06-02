@@ -82,3 +82,6 @@ test.js
 
 # Test folder
 tests/
+
+# Docs build
+docs/_build
