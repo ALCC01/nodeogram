@@ -83,4 +83,5 @@ test.js
 # Test folder
 tests/
 
-
+# Documentation
+docs/

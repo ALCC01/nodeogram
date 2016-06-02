@@ -59,10 +59,6 @@ Nodeogram is released under the GNU General Public License 3.0.
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-=================
-Table of contents
-=================
-
 .. _user-documentation:
 .. toctree::
       :maxdepth: 3
@@ -70,3 +66,11 @@ Table of contents
       :glob:
 
       quickstart
+
+.. _objects-documentation:
+.. toctree::
+    :maxdepth: 3
+    :caption: Objects
+    :glob:
+
+    objects/Bot

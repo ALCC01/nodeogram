@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bot &mdash; Nodeogram 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Nodeogram 0.0.1 documentation" href="../index.html"/>
+        <link rel="prev" title="Overview" href="../quickstart.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Nodeogram
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Objects</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bot-token">Bot(token)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#init">init()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getupdates">getUpdates()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-command-description-callback">command(command, description, callback)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getchat-chat-id">getChat(chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leavechat-chat-id">leaveChat(chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendmessage-chat-id-text-options">sendMessage(chat_id, text, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendlocation-chat-id-longitude-latitude-options">sendLocation(chat_id, longitude, latitude, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendvenue-chat-id-longitude-latitude-title-address-options">sendVenue(chat_id, longitude, latitude, title, address, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendcontact-chat-id-phone-number-first-name-options">sendContact(chat_id, phone_number, first_name, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forwardmessage-chat-id-from-chat-id-message-id-options">forwardMessage(chat_id, from_chat_id, message_id, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answercallbackquery-id-text-alert">answerCallbackQuery(id, text, alert)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getuserprofilephotos-user-id-options">getUserProfilePhotos(user_id, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getfile-file-id">getFile(file_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendfile-chat-id-type-path-options">sendFile(chat_id, type, path, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloadfile-file-id">downloadFile(file_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answerinlinequery-inline-query-id-results-options">answerInlineQuery(inline_query_id, results, options)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editmessagetext-id-text-inline-options-chat-id">editMessageText = (id, text, inline, options, chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editmessagecaption-id-caption-inline-options-chat-id">editMessageCaption = (id, caption, inline, options, chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editmessagereplymarkup-id-markup-inline-options-chat-id">editMessageReplyMarkup = (id, markup, inline, options, chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getchatadministrators-chat-id">getChatAdministrators (chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getchatmember-chat-id-user-id">getChatMember(chat_id, user_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kickchatmember-chat-id-user-id">kickChatMember(chat_id, user_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unbanchatmember-chat-id-user-id">unbanChatMember(chat_id, user_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getchatmemberscount-chat-id">getChatMembersCount(chat_id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sendchataction-chat-id-action">sendChatAction(chat_id, action)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Nodeogram</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Bot</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/objects/Bot.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bot">
+<h1>Bot<a class="headerlink" href="#bot" title="Permalink to this headline">¶</a></h1>
+<p>This object represents a Telegram bot.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Bot object and its attributes should remain unchanged after it has been initialized.</p>
+</div>
+<div class="section" id="bot-token">
+<h2>Bot(token)<a class="headerlink" href="#bot-token" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">token</span></code> &lt;String&gt; A valid token for the Telegram Bot API</li>
+</ul>
+<p>Creates a new Bot object and fetches basic information about it (aysncronous call to Telegram&#8217;s <code class="docutils literal"><span class="pre">getMe</span></code> method).</p>
+</div>
+<div class="section" id="init">
+<span id="id1"></span><h2>init()<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h2>
+<p>Starts fetching updates for the bot.</p>
+</div>
+<div class="section" id="getupdates">
+<h2>getUpdates()<a class="headerlink" href="#getupdates" title="Permalink to this headline">¶</a></h2>
+<p>Retrieves updates for the bot from the Telegram API and processes them. This function is called by <a class="reference internal" href="#init"><span class="std std-ref">init()</span></a> and
+shouldn&#8217;t be called manually. The first call made by the bot will be with a -1 offset that will erase any backlog updates.
+Updates older than 2 seconds are also ignored. Updates are retrieved 100 at a time, with a 30 seconds timeout.</p>
+</div>
+<div class="section" id="command-command-description-callback">
+<h2>command(command, description, callback)<a class="headerlink" href="#command-command-description-callback" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">command</span></code> &lt;String&gt; The command, without the opening /</li>
+<li><code class="docutils literal"><span class="pre">description</span></code> &lt;String&gt; The command&#8217;s description, will be used for the /help message</li>
+<li><code class="docutils literal"><span class="pre">callback</span></code> &lt;Function&gt; This function will be called whenever the command is triggered with an array of arguments <code class="docutils literal"><span class="pre">args</span></code> along with the <span class="xref doc">Message</span> <code class="docutils literal"><span class="pre">message</span></code> responsible for triggering the command</li>
+</ul>
+<p>Registers a command handler for the specified <code class="docutils literal"><span class="pre">command</span></code>, with the provided <code class="docutils literal"><span class="pre">description</span></code> and <code class="docutils literal"><span class="pre">callback</span></code>, also
+adding the command to the /help message.</p>
+</div>
+<div class="section" id="getchat-chat-id">
+<h2>getChat(chat_id)<a class="headerlink" href="#getchat-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;</li>
+</ul>
+<p>Returns a promise that resolves to the <span class="xref doc">Chat</span> object of the requested chat.</p>
+</div>
+<div class="section" id="leavechat-chat-id">
+<h2>leaveChat(chat_id)<a class="headerlink" href="#leavechat-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;</li>
+</ul>
+<p>Leaves the chat and returns a promise that resolves to the response (according to Telegram, true on success).</p>
+</div>
+<div class="section" id="sendmessage-chat-id-text-options">
+<h2>sendMessage(chat_id, text, options)<a class="headerlink" href="#sendmessage-chat-id-text-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">text</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Sends a message to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing what has
+been sent.</p>
+</div>
+<div class="section" id="sendlocation-chat-id-longitude-latitude-options">
+<h2>sendLocation(chat_id, longitude, latitude, options)<a class="headerlink" href="#sendlocation-chat-id-longitude-latitude-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">longitude</span></code> &lt;Number&gt;</li>
+<li><code class="docutils literal"><span class="pre">latitude</span></code> &lt;Number&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Sends a location object to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing what
+has been sent.</p>
+</div>
+<div class="section" id="sendvenue-chat-id-longitude-latitude-title-address-options">
+<h2>sendVenue(chat_id, longitude, latitude, title, address, options)<a class="headerlink" href="#sendvenue-chat-id-longitude-latitude-title-address-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">longitude</span></code> &lt;Number&gt;</li>
+<li><code class="docutils literal"><span class="pre">latitude</span></code> &lt;Number&gt;</li>
+<li><code class="docutils literal"><span class="pre">title</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">address</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Sends a venue object to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing what has
+been sent.</p>
+</div>
+<div class="section" id="sendcontact-chat-id-phone-number-first-name-options">
+<h2>sendContact(chat_id, phone_number, first_name, options)<a class="headerlink" href="#sendcontact-chat-id-phone-number-first-name-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">phone_number</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">first_name</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Sends a contact object to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing what has
+been sent.</p>
+</div>
+<div class="section" id="forwardmessage-chat-id-from-chat-id-message-id-options">
+<h2>forwardMessage(chat_id, from_chat_id, message_id, options)<a class="headerlink" href="#forwardmessage-chat-id-from-chat-id-message-id-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">from_chat_id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">message_id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Forwards a message to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing what has
+been sent.</p>
+</div>
+<div class="section" id="answercallbackquery-id-text-alert">
+<h2>answerCallbackQuery(id, text, alert)<a class="headerlink" href="#answercallbackquery-id-text-alert" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">text</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">alert</span></code> &lt;Boolean&gt; Whether the user should be shown an alert</li>
+</ul>
+<p>Answers a callback query and returns a promise that resolves to the response (according to Telegram, true on success).</p>
+</div>
+<div class="section" id="getuserprofilephotos-user-id-options">
+<h2>getUserProfilePhotos(user_id, options)<a class="headerlink" href="#getuserprofilephotos-user-id-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">user_id</span></code> &lt;String&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Returns a promise that resolves to a <span class="xref doc">UserProfilePhotos</span> object.</p>
+</div>
+<div class="section" id="getfile-file-id">
+<h2>getFile(file_id)<a class="headerlink" href="#getfile-file-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">file_id</span></code> &lt;String&gt;</li>
+</ul>
+<p>Returns a promise that resolves to a <span class="xref doc">File</span> object.</p>
+</div>
+<div class="section" id="sendfile-chat-id-type-path-options">
+<h2>sendFile(chat_id, type, path, options)<a class="headerlink" href="#sendfile-chat-id-type-path-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">type</span></code> &lt;String&gt; Must be one of the following: <code class="docutils literal"><span class="pre">photo</span></code>, <code class="docutils literal"><span class="pre">audio</span></code>, <code class="docutils literal"><span class="pre">sticker</span></code>, <code class="docutils literal"><span class="pre">document</span></code>, <code class="docutils literal"><span class="pre">video</span></code>, <code class="docutils literal"><span class="pre">voice</span></code></li>
+<li><code class="docutils literal"><span class="pre">path</span></code> &lt;String&gt; File&#8217;s path for local files or file&#8217;s id for uploaded files</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Sends the specified file to the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object representing
+what has been sent.</p>
+</div>
+<div class="section" id="downloadfile-file-id">
+<h2>downloadFile(file_id)<a class="headerlink" href="#downloadfile-file-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">file_id</span></code> &lt;String&gt;|&lt;File&gt;</li>
+</ul>
+<p>Returns a promise that resolves to a NodeJS <a class="reference external" href="https://nodejs.org/api/buffer.html">Buffer</a>.</p>
+</div>
+<div class="section" id="answerinlinequery-inline-query-id-results-options">
+<h2>answerInlineQuery(inline_query_id, results, options)<a class="headerlink" href="#answerinlinequery-inline-query-id-results-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">inline_query_id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">results</span></code> &lt;Array&gt; Array of InlineQueryResult</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+</ul>
+<p>Answers an inline query with the specified results and returns a promise that resolves to the response (according to
+Telegram, true on success).</p>
+</div>
+<div class="section" id="editmessagetext-id-text-inline-options-chat-id">
+<h2>editMessageText = (id, text, inline, options, chat_id)<a class="headerlink" href="#editmessagetext-id-text-inline-options-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">text</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">inline</span></code> &lt;Boolean&gt; Is the message an inline one?</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+</ul>
+<p>Updates the the specified message in the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span> object
+representing the updated message. True is returned by the promise if the message is an inline one.</p>
+</div>
+<div class="section" id="editmessagecaption-id-caption-inline-options-chat-id">
+<h2>editMessageCaption = (id, caption, inline, options, chat_id)<a class="headerlink" href="#editmessagecaption-id-caption-inline-options-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">caption</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">inline</span></code> &lt;Boolean&gt; Is the message an inline one?</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+</ul>
+<p>Updates the the specified message caption in the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span>
+object representing the updated message. True is returned by the promise if the message is an inline one.</p>
+</div>
+<div class="section" id="editmessagereplymarkup-id-markup-inline-options-chat-id">
+<h2>editMessageReplyMarkup = (id, markup, inline, options, chat_id)<a class="headerlink" href="#editmessagereplymarkup-id-markup-inline-options-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">id</span></code> &lt;String&gt;</li>
+<li><code class="docutils literal"><span class="pre">markup</span></code> &lt;Keyboard&gt;</li>
+<li><code class="docutils literal"><span class="pre">inline</span></code> &lt;Boolean&gt; Is the message an inline one?</li>
+<li><code class="docutils literal"><span class="pre">options</span></code> &lt;Object&gt; <em>Optional</em></li>
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+</ul>
+<p>Updates the the specified message markup in the specified chat and returns a promise that resolves to a <span class="xref doc">Message</span>
+object representing the updated message. True is returned by the promise if the message is an inline one.</p>
+</div>
+<div class="section" id="getchatadministrators-chat-id">
+<h2>getChatAdministrators (chat_id)<a class="headerlink" href="#getchatadministrators-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;</li>
+</ul>
+<p>Returns a promise that resolves to an array of <span class="xref doc">ChatMember</span> objects.</p>
+</div>
+<div class="section" id="getchatmember-chat-id-user-id">
+<h2>getChatMember(chat_id, user_id)<a class="headerlink" href="#getchatmember-chat-id-user-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">user_id</span></code> &lt;String&gt;|&lt;User&gt;</li>
+</ul>
+<p>Returns a promise that resolves to a <span class="xref doc">ChatMember</span> object.</p>
+</div>
+<div class="section" id="kickchatmember-chat-id-user-id">
+<h2>kickChatMember(chat_id, user_id)<a class="headerlink" href="#kickchatmember-chat-id-user-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;</li>
+<li><code class="docutils literal"><span class="pre">user_id</span></code> &lt;String&gt;|&lt;User&gt;</li>
+</ul>
+<p>Kicks the specified user from the specified chat and returns a promise that resolves to the response (according to
+Telegram, true on success).</p>
+</div>
+<div class="section" id="unbanchatmember-chat-id-user-id">
+<h2>unbanChatMember(chat_id, user_id)<a class="headerlink" href="#unbanchatmember-chat-id-user-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;</li>
+<li><code class="docutils literal"><span class="pre">user_id</span></code> &lt;String&gt;|&lt;User&gt;</li>
+</ul>
+<p>Unbans the specified user from the specified chat and returns a promise that resolves to the response (according to
+Telegram, true on success).</p>
+</div>
+<div class="section" id="getchatmemberscount-chat-id">
+<h2>getChatMembersCount(chat_id)<a class="headerlink" href="#getchatmemberscount-chat-id" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;</li>
+</ul>
+<p>Returns a promise that resolves to the response.</p>
+</div>
+<div class="section" id="sendchataction-chat-id-action">
+<h2>sendChatAction(chat_id, action)<a class="headerlink" href="#sendchataction-chat-id-action" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">chat_id</span></code> &lt;String&gt;|&lt;Chat&gt;|&lt;User&gt;</li>
+<li><code class="docutils literal"><span class="pre">action</span></code> &lt;String&gt; Must be one of the following: <code class="docutils literal"><span class="pre">typing</span></code>, <code class="docutils literal"><span class="pre">upload_photo</span></code>, <code class="docutils literal"><span class="pre">record_video</span></code>, <code class="docutils literal"><span class="pre">upload_video</span></code>, <code class="docutils literal"><span class="pre">record_audio</span></code>, <code class="docutils literal"><span class="pre">upload_audio</span></code>, <code class="docutils literal"><span class="pre">upload_document</span></code>, <code class="docutils literal"><span class="pre">find_location</span></code></li>
+</ul>
+<p>Returns a promise that resolves to the response (true on success).</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../quickstart.html" class="btn btn-neutral" title="Overview" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Alberto Coscia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
