@@ -3,9 +3,9 @@ Nodeogram is a simple yet complete Node.JS module for Telegram bots.
 
 ## Features
 * **Not a wrapper**. Nodeogram takes the Telegram API to the next level and allows you to create your bots while handling all the boring stuff for you
-* **Complete**. Nodeogram features all of the most recent API updates and it's designed to not block you from using right away the not yet implemented ones
+* **Complete**. Nodeogram features all of the most recent API updates and is designed not to block you from using right away the not yet implemented ones
 * **Promises**. The entire library is promise-based
-* **Event based**. Nodeogram provides an event-based handling of updates, allowing you to interact more easily with message, commands, callback and line queries.
+* **Event based**. Nodeogram provides an event-based handling of updates, allowing you to interact more easily with messages, commands, callback and inline queries.
 
 ## Getting started
 
@@ -15,7 +15,7 @@ First, you'll need to install the module
 npm i --save nodeogram
 ```
 
-Once the packages is installed, you can start working on you bot.
+Once the package is installed, you can start working on your bot.
 
 ```javascript
 const nodeogram = require('nodeogram'),
