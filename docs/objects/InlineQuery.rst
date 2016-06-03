@@ -7,9 +7,7 @@ This object represents a Telegram inline query.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#inlinequery>`_.
 
-========================
-InlineQuery(object, bot)
-========================
+.. js:class:: InlineQuery(object, bot)
 
 .. warning::
 
@@ -17,12 +15,10 @@ InlineQuery(object, bot)
 
 Creates a new InlineQuery object.
 
-========================
-answer(results, options)
-========================
+.. js:function:: answer(results, options)
 
-* ``results`` <Array> Array of InlineQueryResult
-* ``options`` <Object> *Optional*
+    :param array results: Array of InlineQueryResult's
+    :param object options: *Optional*
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-Answers the inline query with the specified results and returns a promise that resolves to the response (according to
-Telegram, true on success).
+    Answers the inline query with the specified results.

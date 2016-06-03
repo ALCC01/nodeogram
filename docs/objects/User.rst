@@ -7,9 +7,7 @@ This object represents a Telegram user.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#user>`_
 
-=================
-User(object, bot)
-=================
+.. js:class:: User(object, bot)
 
 .. warning::
 
@@ -17,90 +15,73 @@ User(object, bot)
 
 Creates a new User object.
 
-==========================
-sendMessage(text, options)
-==========================
+.. js:function:: sendMessage(text[, options])
 
-* ``text`` <String>
-* ``options`` <Object> *Optional*
+    :param string text:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Sends a message to the user and returns a promise that resolves to a :doc:`Message` object representing what has been sent.
+    Sends a message to the user.
 
-==========================================
-sendLocation(longitude, latitude, options)
-==========================================
+.. js:function:: sendLocation(longitude, latitude[, options])
 
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``options`` <Object> *Optional*
+    :param number longitude:
+    :param number latitude:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Sends a location object to the user and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    Sends a location object to the user.
 
-=======================================================
-sendVenue(longitude, latitude, title, address, options)
-=======================================================
+.. js:function:: sendVenue(longitude, latitude, title, address[, options])
 
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``title`` <String>
-* ``address`` <String>
-* ``options`` <Object> *Optional*
+    :param number longitude:
+    :param number latitude:
+    :param string title:
+    :param string address:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Sends a venue object to the user and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    Sends a venue object to the user.
 
-==============================================
-sendContact(phone_number, first_name, options)
-==============================================
+.. js:function:: sendContact(phone_number, first_name[, options])
 
-* ``phone_number`` <String>
-* ``first_name`` <String>
-* ``options`` <Object> *Optional*
+    :param string phone_number:
+    :param string first_name:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Sends a contact object to the user and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    Sends a contact object to the user.
 
-=================================================
-forwardMessage(from_chat_id, message_id, options)
-=================================================
+.. js:function:: forwardMessage(from_chat_id, message_id[, options])
 
-* ``from_chat_id`` <String>
-* ``message_id`` <String>
-* ``options`` <Object> *Optional*
+    :param string from_chat_id:
+    :param string message_id:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Forwards a message to the user and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
 
-=============================
-sendFile(type, path, options)
-=============================
+    Forwards a message to the user.
 
-* ``type`` <String> Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
-* ``path`` <String> File's path for local files or file's id for uploaded files
-* ``options`` <Object> *Optional*
+.. js:function:: sendFile(type, path[, options])
 
-Sends the specified file to the user and returns a promise that resolves to a :doc:`Message` object representing
-what has been sent.
+    :param string type: <String> Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
+    :param string path: File's path for local files or file's id for uploaded files
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-==================
-sendAction(action)
-==================
+    Sends the specified file to the user.
 
-* ``action`` <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
 
-Returns a promise that resolves to the response (true on success).
+.. js:function:: sendAction(action)
 
-=========================
-getProfilePhotos(options)
-=========================
+    :param string action: <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
+    :returns: A promise that resolves to the response (true on success).
 
-* ``options`` <Object> *Optional*
+.. js:function:: getProfilePhotos(options)
 
-Returns a promise that resolves to a :doc:`UserProfilePhotos` object.
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`UserProfilePhotos` object.
 
-====
-name
-====
+.. js:attribute:: User.name
 
-<String> The full name of the user (first name + last name).
+    The full name of the chat (first name + last name).

@@ -7,9 +7,7 @@ This object represents a Telegram callback query.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#callbackquery>`_.
 
-==========================
-CallbackQuery(object, bot)
-==========================
+.. js:class:: CallbackQuery(object, bot)
 
 .. warning::
 
@@ -17,11 +15,10 @@ CallbackQuery(object, bot)
 
 Creates a new CallbackQuery object.
 
-================================
-answerCallbackQuery(text, alert)
-================================
+.. js:function:: answerCallbackQuery(text, alert)
 
-* ``text`` <String>
-* ``alert`` <Boolean> Whether the user should be shown an alert
+    :param string text:
+    :param boolean alert: Whether the user should be shown an alert
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-Answers the query and returns a promise that resolves to the response (according to Telegram, true on success).
+    Answers the query.

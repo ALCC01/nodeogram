@@ -7,9 +7,7 @@ This object represents a Telegram chosen inline query result.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#choseninlineresult>`_.
 
-===============================
-ChosenInlineResult(object, bot)
-===============================
+.. js:class:: ChosenInlineResult(object, bot)
 
 .. warning::
 

@@ -7,9 +7,7 @@ This object represents a Telegram chat.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#chat>`_
 
-=================
-Chat(object, bot)
-=================
+.. js:class:: Chat(object, bot)
 
 .. warning::
 
@@ -17,128 +15,101 @@ Chat(object, bot)
 
 Creates a new Chat object.
 
-=======
-leave()
-=======
+.. js:function:: leave()
 
-Leaves the chat and returns a promise that resolves to the response (according to Telegram, true on success).
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-==========================
-sendMessage(text, options)
-==========================
+    Leaves the chat.
 
-* ``text`` <String>
-* ``options`` <Object> *Optional*
+.. js:function:: sendMessage(text[, options])
 
-Sends a message to the chat and returns a promise that resolves to a :doc:`Message` object representing what has been sent.
+    :param string text:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-==========================================
-sendLocation(longitude, latitude, options)
-==========================================
+    Sends a message to the chat.
 
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``options`` <Object> *Optional*
+.. js:function:: sendLocation(longitude, latitude[, options])
 
-Sends a location object to the chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    :param number longitude:
+    :param number latitude:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-=======================================================
-sendVenue(longitude, latitude, title, address, options)
-=======================================================
+    Sends a location object to the chat.
 
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``title`` <String>
-* ``address`` <String>
-* ``options`` <Object> *Optional*
+.. js:function:: sendVenue(longitude, latitude, title, address[, options])
 
-Sends a venue object to the chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    :param number longitude:
+    :param number latitude:
+    :param string title:
+    :param string address:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-==============================================
-sendContact(phone_number, first_name, options)
-==============================================
+    Sends a venue object to the chat.
 
-* ``phone_number`` <String>
-* ``first_name`` <String>
-* ``options`` <Object> *Optional*
+.. js:function:: sendContact(phone_number, first_name[, options])
 
-Sends a contact object to the chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    :param string phone_number:
+    :param string first_name:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-=================================================
-forwardMessage(from_chat_id, message_id, options)
-=================================================
+    Sends a contact object to the chat.
 
-* ``from_chat_id`` <String>
-* ``message_id`` <String>
-* ``options`` <Object> *Optional*
+.. js:function:: forwardMessage(from_chat_id, message_id[, options])
 
-Forwards a message to the chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    :param string from_chat_id:
+    :param string message_id:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-=============================
-sendFile(type, path, options)
-=============================
 
-* ``type`` <String> Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
-* ``path`` <String> File's path for local files or file's id for uploaded files
-* ``options`` <Object> *Optional*
+    Forwards a message to the chat.
 
-Sends the specified file to the chat and returns a promise that resolves to a :doc:`Message` object representing
-what has been sent.
+.. js:function:: sendFile(type, path[, options])
 
-===================
-getAdministrators()
-===================
+    :param string type: <String> Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
+    :param string path: File's path for local files or file's id for uploaded files
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-* ``chat_id`` <String>|<Chat>
+    Sends the specified file to the chat.
 
-Returns a promise that resolves to an array of :doc:`ChatMember` objects.
+.. js:function:: getAdministrators()
 
-==================
-getMember(user_id)
-==================
+    Returns a promise that resolves to an array of :doc:`ChatMember` objects.
 
-* ``user_id`` <String>|<User>
+.. js:function:: getMember(user_id)
 
-Returns a promise that resolves to a :doc:`ChatMember` object.
+    :param string user_id: Can also be a :doc:`User` object
 
-===================
-kickMember(user_id)
-===================
+    Returns a promise that resolves to a :doc:`ChatMember` object.
 
-* ``user_id`` <String>|<User>
+.. js:function:: kickMember(user_id)
 
-Kicks the specified user from the chat and returns a promise that resolves to the response (according to
-Telegram, true on success).
+    :param string user_id: Can also be a :doc:`User` object
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-====================
-unbanMember(user_id)
-====================
+    Kicks the specified user from the chat.
 
-* ``user_id`` <String>|<User>
+.. js:function:: unbanMember(user_id)
 
-Unbans the specified user from the chat and returns a promise that resolves to the response (according to
-Telegram, true on success).
+    :param string user_id: Can also be a :doc:`User` object
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-=================
-getMembersCount()
-=================
+    Unbans the specified user from the chat.
 
-Returns a promise that resolves to the response.
+.. js:function:: getMembersCount()
 
-==================
-sendAction(action)
-==================
+    :returns: A promise that resolves to the response.
 
-* ``action`` <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
+.. js:function:: sendAction(action)
 
-Returns a promise that resolves to the response (true on success).
+    :param string action: <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
+    :returns: A promise that resolves to the response (true on success).
 
-====
-name
-====
+.. js:attribute:: Chat.name
 
-<String> *Optional*. The full name of the chat (first name + last name) if available
+    *Optional*. The full name of the chat (first name + last name) if available

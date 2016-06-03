@@ -7,9 +7,7 @@ This object represents a Telegram user's profile photos.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#userprofilephotos>`_.
 
-==============================
-UserProfilePhotos(object, bot)
-==============================
+.. js:class:: UserProfilePhotos(object, bot)
 
 .. warning::
 
@@ -17,8 +15,6 @@ UserProfilePhotos(object, bot)
 
 Creates a new UserProfilePhotos object.
 
-======
-photos
-======
+.. js:attribute:: UserProfilePhotos.photos
 
-<Array> Array of arrays of :doc:`PhotoSize` objects.
+    Array of arrays of :doc:`PhotoSize` objects.

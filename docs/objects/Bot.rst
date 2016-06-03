@@ -6,267 +6,213 @@ This object represents a Telegram bot.
 .. warning::
     The Bot object and its attributes should remain unchanged after it has been initialized.
 
-==========
-Bot(token)
-==========
 
-* ``token`` <String> A valid token for the Telegram Bot API
+.. js:class:: Bot(token)
 
-Creates a new Bot object and fetches basic information about it (aysncronous call to Telegram's ``getMe`` method).
+    :param string token: A valid token for the Telegram Bot API
+    :returns: A Bot object
+
+    Creates a new Bot object and fetches basic information about it (aysncronous call to Telegram's ``getMe`` method).
 
 .. _init:
+.. js:function:: init()
 
-======
-init()
-======
+    Starts fetching updates for the bot.
 
-Starts fetching updates for the bot.
+.. js:function:: getUpdates()
 
-============
-getUpdates()
-============
+    Retrieves updates for the bot from the Telegram API and processes them. This function is called by :ref:`init` and
+    shouldn't be called manually. The first call made by the bot will be with a -1 offset that will erase any backlog updates.
+    Updates older than 2 seconds are also ignored. Updates are retrieved 100 at a time, with a 30 seconds timeout.
 
-Retrieves updates for the bot from the Telegram API and processes them. This function is called by :ref:`init` and
-shouldn't be called manually. The first call made by the bot will be with a -1 offset that will erase any backlog updates.
-Updates older than 2 seconds are also ignored. Updates are retrieved 100 at a time, with a 30 seconds timeout.
+.. js:function:: command(command, description, callback)
 
-=======================================
-command(command, description, callback)
-=======================================
+    :param string command: The command, without the opening /
+    :param string description: <String> The command's description, will be used for the /help message
+    :param function callback: <Function> This function will be called whenever the command is triggered with an array of arguments ``args`` along with the :doc:`Message` ``message`` responsible for triggering the command
 
-* ``command`` <String> The command, without the opening /
-* ``description`` <String> The command's description, will be used for the /help message
-* ``callback`` <Function> This function will be called whenever the command is triggered with an array of arguments ``args`` along with the :doc:`Message` ``message`` responsible for triggering the command
+    Registers a command handler for the specified ``command``, with the provided ``description`` and ``callback``, also
+    adding the command to the /help message.
 
-Registers a command handler for the specified ``command``, with the provided ``description`` and ``callback``, also
-adding the command to the /help message.
+.. js:function:: getChat(chat_id)
 
-================
-getChat(chat_id)
-================
+    :param string chat_id:
+    :returns: A promise that resolves to the :doc:`Chat` object of the requested chat.
 
-* ``chat_id`` <String>
+.. js:function:: leaveChat(chat_id)
 
-Returns a promise that resolves to the :doc:`Chat` object of the requested chat.
+    :param string chat_id: Can also be a :doc:`Chat` object
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-==================
-leaveChat(chat_id)
-==================
+    Leaves the chat.
 
-* ``chat_id`` <String>|<Chat>
+.. js:function:: sendMessage(chat_id, text[, options])
 
-Leaves the chat and returns a promise that resolves to the response (according to Telegram, true on success).
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string text:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-===================================
-sendMessage(chat_id, text, options)
-===================================
+    Sends a message to the specified chat.
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``text`` <String>
-* ``options`` <Object> *Optional*
+.. js:function:: sendLocation(chat_id, longitude, latitude[, options])
 
-Sends a message to the specified chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param number longitude:
+    :param number latitude:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-===================================================
-sendLocation(chat_id, longitude, latitude, options)
-===================================================
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``options`` <Object> *Optional*
+    Sends a location object to the specified chat.
 
-Sends a location object to the specified chat and returns a promise that resolves to a :doc:`Message` object representing what
-has been sent.
+.. js:function:: sendVenue(chat_id, longitude, latitude, title, address[, options])
 
-================================================================
-sendVenue(chat_id, longitude, latitude, title, address, options)
-================================================================
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param number longitude:
+    :param number latitude:
+    :param string title:
+    :param string address:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``longitude`` <Number>
-* ``latitude`` <Number>
-* ``title`` <String>
-* ``address`` <String>
-* ``options`` <Object> *Optional*
+    Sends a venue object to the specified chat.
 
-Sends a venue object to the specified chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+.. js:function:: sendContact(chat_id, phone_number, first_name[, options])
 
-=======================================================
-sendContact(chat_id, phone_number, first_name, options)
-=======================================================
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string phone_number:
+    :param string first_name:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``phone_number`` <String>
-* ``first_name`` <String>
-* ``options`` <Object> *Optional*
 
-Sends a contact object to the specified chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    Sends a contact object to the specified chat.
 
-==========================================================
-forwardMessage(chat_id, from_chat_id, message_id, options)
-==========================================================
+.. js:function:: forwardMessage(chat_id, from_chat_id, message_id[, options])
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``from_chat_id`` <String>
-* ``message_id`` <String>
-* ``options`` <Object> *Optional*
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string from_chat_id:
+    :param string message_id:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Forwards a message to the specified chat and returns a promise that resolves to a :doc:`Message` object representing what has
-been sent.
+    Forwards a message to the specified chat,
 
-====================================
-answerCallbackQuery(id, text, alert)
-====================================
+.. js:function:: answerCallbackQuery(id, text, alert)
 
-* ``id`` <String>
-* ``text`` <String>
-* ``alert`` <Boolean> Whether the user should be shown an alert
+    :param string id:
+    :param string text:
+    :param boolean alert: Whether the user should be shown an alert
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-Answers a callback query and returns a promise that resolves to the response (according to Telegram, true on success).
+    Answers a callback query.
 
-======================================
-getUserProfilePhotos(user_id, options)
-======================================
+.. js:function:: getUserProfilePhotos(user_id[, options])
 
-* ``user_id`` <String>|<User>
-* ``options`` <Object> *Optional*
+    :param string user_id: Can also be a :doc:`User` object
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`UserProfilePhotos` object.
 
-Returns a promise that resolves to a :doc:`UserProfilePhotos` object.
+.. js:function:: getFile(file_id)
 
-================
-getFile(file_id)
-================
+    :param string file_id:
+    :returns: A promise that resolves to a :doc:`File` object.
 
-* ``file_id`` <String>
+.. js:function:: sendFile(chat_id, type, path[, options])
 
-Returns a promise that resolves to a :doc:`File` object.
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string type: Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
+    :param string path: File's path for local files or file's id for uploaded files
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-======================================
-sendFile(chat_id, type, path, options)
-======================================
+    Sends the specified file to the specified chat,
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``type`` <String> Must be one of the following: ``photo``, ``audio``, ``sticker``, ``document``, ``video``, ``voice``
-* ``path`` <String> File's path for local files or file's id for uploaded files
-* ``options`` <Object> *Optional*
+.. js:function:: downloadFile(file_id)
 
-Sends the specified file to the specified chat and returns a promise that resolves to a :doc:`Message` object representing
-what has been sent.
+    :param string file_id: Can also be a :doc:`File` object
+    :returns: A promise that resolves to a NodeJS `Buffer <https://nodejs.org/api/buffer.html>`_.
 
-=====================
-downloadFile(file_id)
-=====================
+.. js:function:: answerInlineQuery(inline_query_id, results[, options])
 
-* ``file_id`` <String>|<File>
+    :param string inline_query_id:
+    :param array results: Array of InlineQueryResult
+    :param object options: *Optional*
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-Returns a promise that resolves to a NodeJS `Buffer <https://nodejs.org/api/buffer.html>`_.
+    Answers an inline query with the specified results.
 
-====================================================
-answerInlineQuery(inline_query_id, results, options)
-====================================================
+.. js:function:: editMessageText(id, text, inline, options, chat_id)
 
-* ``inline_query_id`` <String>
-* ``results`` <Array> Array of InlineQueryResult
-* ``options`` <Object> *Optional*
+    :param string id:
+    :param string text:
+    :param boolean inline: Is the message an inline one?
+    :param object options:
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Answers an inline query with the specified results and returns a promise that resolves to the response (according to
-Telegram, true on success).
+    Updates the specified message in the specified chat.
 
-======================================================
-editMessageText = (id, text, inline, options, chat_id)
-======================================================
+.. js:function:: editMessageCaption(id, caption, inline, options, chat_id)
 
-* ``id`` <String>
-* ``text`` <String>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object>
-* ``chat_id`` <String>|<Chat>|<User>
+    :param string id:
+    :param string caption:
+    :param boolean inline: Is the message an inline one?
+    :param object options:
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Updates the the specified message in the specified chat and returns a promise that resolves to a :doc:`Message` object
-representing the updated message. True is returned by the promise if the message is an inline one.
+    Updates the specified message caption in the specified chat.
 
-============================================================
-editMessageCaption = (id, caption, inline, options, chat_id)
-============================================================
+.. js:function:: editMessageReplyMarkup(id, markup, inline, options, chat_id)
 
-* ``id`` <String>
-* ``caption`` <String>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object>
-* ``chat_id`` <String>|<Chat>|<User>
+    :param string id:
+    :param keyboard markup:
+    :param boolean inline: Is the message an inline one?
+    :param object options:
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Updates the the specified message caption in the specified chat and returns a promise that resolves to a :doc:`Message`
-object representing the updated message. True is returned by the promise if the message is an inline one.
+    Updates the specified message markup in the specified chat.
 
-===============================================================
-editMessageReplyMarkup = (id, markup, inline, options, chat_id)
-===============================================================
+.. js:function:: getChatAdministrators (chat_id)
 
-* ``id`` <String>
-* ``markup`` <Keyboard>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object>
-* ``chat_id`` <String>|<Chat>|<User>
+    :param string chat_id: Can also be a :doc:`Chat` object
 
-Updates the the specified message markup in the specified chat and returns a promise that resolves to a :doc:`Message`
-object representing the updated message. True is returned by the promise if the message is an inline one.
+    Returns a promise that resolves to an array of :doc:`ChatMember` objects.
 
-===============================
-getChatAdministrators (chat_id)
-===============================
+.. js:function:: getChatMember(chat_id, user_id)
 
-* ``chat_id`` <String>|<Chat>
+    :param string chat_id: Can also be a :doc:`Chat` object
+    :param string user_id: Can also be a :doc:`User` object
+    :returns: A promise that resolves to a :doc:`ChatMember` object.
 
-Returns a promise that resolves to an array of :doc:`ChatMember` objects.
+.. js:function:: kickChatMember(chat_id, user_id)
 
-===============================
-getChatMember(chat_id, user_id)
-===============================
+    :param string chat_id: Can also be a :doc:`Chat` object
+    :param string user_id: Can also be a :doc:`User` object
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``user_id`` <String>|<User>
+    Kicks the specified user from the specified chat.
 
-Returns a promise that resolves to a :doc:`ChatMember` object.
+.. js:function:: unbanChatMember(chat_id, user_id)
 
-================================
-kickChatMember(chat_id, user_id)
-================================
+    :param string chat_id: Can also be a :doc:`Chat` object
+    :param string user_id: Can also be a :doc:`User` object
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
-* ``chat_id`` <String>|<Chat>
-* ``user_id`` <String>|<User>
+    Unbans the specified user from the specified chat.
 
-Kicks the specified user from the specified chat and returns a promise that resolves to the response (according to
-Telegram, true on success).
+.. js:function:: getChatMembersCount(chat_id)
 
-=================================
-unbanChatMember(chat_id, user_id)
-=================================
+    :param string chat_id: Can also be a :doc:`Chat` object
+    :returns: A promise that resolves to the response.
 
-* ``chat_id`` <String>|<Chat>
-* ``user_id`` <String>|<User>
+.. js:function:: sendChatAction(chat_id, action)
 
-Unbans the specified user from the specified chat and returns a promise that resolves to the response (according to
-Telegram, true on success).
-
-============================
-getChatMembersCount(chat_id)
-============================
-
-* ``chat_id`` <String>|<Chat>
-
-Returns a promise that resolves to the response.
-
-===============================
-sendChatAction(chat_id, action)
-===============================
-
-* ``chat_id`` <String>|<Chat>|<User>
-* ``action`` <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
-
-Returns a promise that resolves to the response (true on success).
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string action: Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
+    :returns: A promise that resolves to the response (according to Telegram, true on success).
 
 

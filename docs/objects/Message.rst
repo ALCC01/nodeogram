@@ -7,9 +7,7 @@ This object represents a Telegram message.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#message>`_.
 
-====================
-Message(object, bot)
-====================
+.. js:class:: Message(object, bot)
 
 .. warning::
 
@@ -17,85 +15,68 @@ Message(object, bot)
 
 Creates a new Message object.
 
-====================
-reply(text, options)
-====================
+.. js:function:: reply(text[, options])
 
-* ``text`` <String>
-* ``options`` <Object> *Optional*
+    :param string text:
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-Replies to the message and returns a promise that resolves to a :doc:`Message` object representing what has been sent.
+    Replies to the message.
 
-=========================
-forward(chat_id, options)
-=========================
+.. js:function:: forward(chat_id[, options])
 
-* ``chat_id`` <String>|<Chat>|<User>
-* ``options`` <Object> *Optional*
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param object options: *Optional*
 
-Forwards the message to the specified chat and returns a promise that resolves to a :doc:`Message` object representing
-what has been sent.
+    Forwards the message to the specified chat.
 
-==================================
-editText = (text, inline, options)
-==================================
+.. js:function:: editText(text, inline[, options])
 
-* ``text`` <String>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+    :param string text:
+    :param boolean inline: Is the message an inline one?
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Updates the the specified message in the specified chat and returns a promise that resolves to a :doc:`Message` object
-representing the updated message. True is returned by the promise if the message is an inline one.
+    Updates the the specified message.
 
-========================================
-editCaption = (caption, inline, options)
-========================================
+.. js:function:: editCaption(caption, inline[, options])
 
-* ``caption`` <String>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+    :param string caption:
+    :param boolean inline: Is the message an inline one?
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Updates the the specified message caption in the specified chat and returns a promise that resolves to a :doc:`Message`
-object representing the updated message. True is returned by the promise if the message is an inline one.
+    Updates the specified message caption.
 
-===========================================
-editReplyMarkup = (markup, inline, options)
-===========================================
+.. js:function:: editReplyMarkup(markup, inline[, options])
 
-* ``markup`` <Keyboard>
-* ``inline`` <Boolean> Is the message an inline one?
-* ``options`` <Object> *Optional*
+    :param keyboard markup:
+    :param boolean inline: Is the message an inline one?
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
-Updates the the specified message markup in the specified chat and returns a promise that resolves to a :doc:`Message`
-object representing the updated message. True is returned by the promise if the message is an inline one.
+    Updates the specified message markup.
 
-========
-commands
-========
-<Array> Array of objects, each one representing a command in the message.
+.. js:attribute:: Message.commands
+
+    Array of objects, each one representing a command in the message.
 
 .. code-block:: javascript
 
     // Recipient is undefined if it's a direct command
     {command: '/echo', recipient: 'yourbot', args: ['Many', 'things']}
 
-========
-mentions
-========
+.. js:attribute:: Message.mentions
 
-<Array> Array of strings, each one representing a mention (e.g. @nickname) in the message.
+    Array of strings, each one representing a mention (e.g. @nickname) in the message.
 
-========
-hashtags
-========
+.. js:attribute:: Message.hashtags
 
-<Array> Array of strings, each one representing an hashtag (e.g. #things) in the message.
+    Array of strings, each one representing an hashtag (e.g. #things) in the message.
 
-=====
-links
-=====
+.. js:attribute:: Message.links
 
-<Array> Array of objects, each one representing a link (both URL and parsed text links) in the message.
+    Array of objects, each one representing a link (both URL and parsed text links) in the message.
 
 .. code-block:: javascript
 
@@ -105,25 +86,18 @@ links
     // Text link
     {type: 'link', url: 'http://google.com', text: 'Google'}
 
-=============
-text_mentions
-=============
+.. js:attribute:: Message.text_mentions
 
-<Array> Array of objects, each one representing a text mention (i.e. mentions of users without a nickname) in the
-message.
+    Array of objects, each one representing a text mention (i.e. mentions of users without a nickname) in themessage.
 
 .. code-block:: javascript
 
     {text: 'User', user: <User>}
 
-=====
-photo
-=====
+.. js:attribute:: Message.photo
 
-<Array> Array of :doc:`PhotoSize` objects.
+    Array of :doc:`PhotoSize` objects.
 
-==============
-new_chat_photo
-==============
+.. js:attribute:: Message.new_chat_photo
 
-<Array> Array of :doc:`PhotoSize` objects.
+    Array of :doc:`PhotoSize` objects.

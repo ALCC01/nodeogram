@@ -7,9 +7,7 @@ This object represents a Telegram chat member.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#chatmember>`_.
 
-=======================
-ChatMember(object, bot)
-=======================
+.. js:class:: ChatMember(object, bot)
 
 .. warning::
 

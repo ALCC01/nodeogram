@@ -7,9 +7,8 @@ This object represents a Telegram file.
 
     This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api#file>`_.
 
-=================
-File(object, bot)
-=================
+.. js:class:: File(object, bot)
+
 
 .. warning::
 
@@ -17,8 +16,6 @@ File(object, bot)
 
 Creates a new File object.
 
-==========
-download()
-==========
+.. js:function:: download()
 
-Returns a promise that resolves to a NodeJS `Buffer <https://nodejs.org/api/buffer.html>`_.
+    :returns: A promise that resolves to a NodeJS `Buffer <https://nodejs.org/api/buffer.html>`_.
