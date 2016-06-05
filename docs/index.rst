@@ -61,11 +61,12 @@ Nodeogram is released under the GNU General Public License 3.0.
 
 .. _user-documentation:
 .. toctree::
-      :maxdepth: 3
-      :caption: User Documentation
-      :glob:
+    :maxdepth: 3
+    :caption: User Documentation
+    :glob:
 
-      quickstart
+    style
+    quickstart
 
 .. _objects-documentation:
 .. toctree::

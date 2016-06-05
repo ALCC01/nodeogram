@@ -14,12 +14,18 @@ This object represents a Telegram bot.
     :returns: A Bot object
 
     Creates a new Bot object and fetches basic information about it (aysncronous call to Telegram's ``getMe`` method).
+
     Valid ``options`` are:
 
     .. code-block:: javascript
 
     {
-        profiles_path: __dirname +'/profiles.json'
+        // File to which profiles should be saved
+        profiles_path: __dirname +'/profiles.json',
+        // Whether or not users should be saved
+        saveUsers: true;
+        // Whether or not chats should be saved
+        saveChats: true
     }
 
 .. _init:

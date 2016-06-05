@@ -310,3 +310,12 @@ correct id.
     // Inline message
     if (query.message) query.message.editText(`You have chosen ${query.data}!`, true)
 
+===================
+Profiles management
+===================
+
+Nodeogram provides a simple way for you and your bot to keep track of the users and chats that are using your services by
+its profile management interface. If a bot is instantiated with ``profiles_path`` in its options, it will start saving
+basic information about any user and chat he will become aware of.
+
+The ``broadcast()`` function will enable you to easily access that data and interact with your users.
