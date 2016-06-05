@@ -7,12 +7,20 @@ This object represents a Telegram bot.
     The Bot object and its attributes should remain unchanged after it has been initialized.
 
 
-.. js:class:: Bot(token)
+.. js:class:: Bot(token[, options])
 
     :param string token: A valid token for the Telegram Bot API
+    :param object options: *Optional*
     :returns: A Bot object
 
     Creates a new Bot object and fetches basic information about it (aysncronous call to Telegram's ``getMe`` method).
+    Valid ``options`` are:
+
+    .. code-block:: javascript
+
+    {
+        profiles_path: __dirname +'/profiles.json'
+    }
 
 .. _init:
 .. js:function:: init()
@@ -215,4 +223,9 @@ This object represents a Telegram bot.
     :param string action: Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
     :returns: A promise that resolves to the response (according to Telegram, true on success).
 
+.. js:function:: broadcast(filter, callback)
 
+    :param string filter: Must be one of the following: ``private``, ``group``, ``supergroup``, ``channel`` or ``all``. Can also be a function that accepts one argument (a :doc:`Chat` object without functions) and returns a boolean value
+    :param function callback: A function to which is provided a single argument, a promise that resolves to a :doc:`Chat` object.
+
+    Iterates a function through all of chats stored in the profiles storage.
