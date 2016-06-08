@@ -33,7 +33,7 @@ Once the package is installed, you can start working on your bot.
    bot.init();
    bot.on('message', message => message.reply("Hello World!"));
 
-And you are done. You can more extensive examples in the :doc:`quickstart`
+And you are done. You can see more extensive examples in the :doc:`quickstart`
 
 =======
 License

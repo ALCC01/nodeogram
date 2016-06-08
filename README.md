@@ -7,6 +7,8 @@ Nodeogram is a simple yet complete Node.JS module for Telegram bots.
 * **Promises**. The entire library is promise-based
 * **Event based**. Nodeogram provides an event-based handling of updates, allowing you to interact more easily with messages, commands, callback and inline queries.
 
+Nodeogram is an open-source project available on `GitHub <https://github.com/ALCC01/nodeogram>`_ and `npm <https://www.npmjs.com/package/nodeogram>`_.
+
 ## Getting started
 
 First, you'll need to install the module
@@ -25,7 +27,7 @@ bot.init();
 bot.on('message', message => message.reply("Hello World!"));
 ```
 
-And you are done.
+And you are done. You can see more extensive examples in the [library overview](https://dev.albertocoscia.me/nodeogram/quickstart.html)
 
 ## Documentation
 Please refer to the [Nodeogram documentation](https://dev.albertocoscia.me/nodeogram/)

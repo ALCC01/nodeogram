@@ -82,12 +82,13 @@ the arguments provided.
 .. code-block:: javascript
     :linenos:
 
-    bot.command('echo', 'Echoes your voice', (args, message) => {
+    bot.command('echo', 'Echoes your voice', false, (args, message) => {
         if (args[0] != '') message.reply(args.join(' '), {});
     });
 
 This registers a new handler for the command ``/echo`` with the description *Echoes your voice* and acts as defined in
-the callback. Oh, did I mention that it also adds it automagically to the ``/help`` command?
+the callback. Oh, did I mention that it also adds it automagically to the ``/help`` command? If you don't want your users
+to know about the command, just make it a secret between you and the bot setting the third argument to ``true``.
 
 ****************
 Service messages

@@ -22,7 +22,7 @@ Nodeogram does not introduce intrusive error handling and as a result you should
 ``catch`` function.
 
 Nodeogram's functions can fail at any time - querying the API, attempting to send a message to a chat the
-bot was kicked out of, etc - and not handling errors properly might result in unexpected behaviours or worse - getting
+bot was kicked out, etc - and not handling errors properly might result in unexpected behaviours or worse - getting
 your bot or IP address tempbanned from Telegram's server could really ruin your day.
 
 ==============

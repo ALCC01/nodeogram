@@ -19,14 +19,16 @@ This object represents a Telegram bot.
 
     .. code-block:: javascript
 
-    {
-        // File to which profiles should be saved
-        profiles_path: __dirname +'/profiles.json',
-        // Whether or not users should be saved
-        saveUsers: true;
-        // Whether or not chats should be saved
-        saveChats: true
-    }
+        {
+            // File to which profiles should be saved
+            profiles_path: __dirname +'/profiles.json',
+            // Whether or not users should be saved
+            saveUsers: true,
+            // Whether or not chats should be saved
+            saveChats: true,
+            // Whether or not the /help command should be registered by default
+            enableHelp: true
+        }
 
 .. _init:
 .. js:function:: init()
@@ -39,11 +41,12 @@ This object represents a Telegram bot.
     shouldn't be called manually. The first call made by the bot will be with a -1 offset that will erase any backlog updates.
     Updates older than 2 seconds are also ignored. Updates are retrieved 100 at a time, with a 30 seconds timeout.
 
-.. js:function:: command(command, description, callback)
+.. js:function:: command(command, description, hidden, callback)
 
     :param string command: The command, without the opening /
-    :param string description: <String> The command's description, will be used for the /help message
-    :param function callback: <Function> This function will be called whenever the command is triggered with an array of arguments ``args`` along with the :doc:`Message` ``message`` responsible for triggering the command
+    :param string description: The command's description, will be used for the default /help message
+    :param boolean hidden: Set this to true in order to hide this command from the default /help message
+    :param function callback: This function will be called whenever the command is triggered with an array of arguments ``args`` along with the :doc:`Message` ``message`` responsible for triggering the command
 
     Registers a command handler for the specified ``command``, with the provided ``description`` and ``callback``, also
     adding the command to the /help message.
