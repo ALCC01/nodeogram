@@ -3,6 +3,10 @@ Overview
 
 This guide provides an overview of the main Nodeogram features.
 
+.. warning::
+
+    Please note that Nodeogram is still in early development and its features could change in any given moment.
+
 =========================
 Getting access to the API
 =========================

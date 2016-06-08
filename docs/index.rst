@@ -67,6 +67,7 @@ Nodeogram is released under the GNU General Public License 3.0.
 
     style
     quickstart
+    changelog
 
 .. _objects-documentation:
 .. toctree::
