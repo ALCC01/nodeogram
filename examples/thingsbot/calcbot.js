@@ -13,7 +13,7 @@ bot.command('random', 'Generates a random number. Usage /random', false, (args, 
     message.reply(Math.floor((Math.random() * 100) + 1));
 });
 
-bot.command('log', 'Returns the natural logarithm of the number. Usage /log [num]', false, (args, message) => {
+bot.command('log', 'Returns the base 10 logarithm of a number. Usage /log [num]', false, (args, message) => {
     message.reply(Math.log10(args[0]));
 });
 
@@ -41,7 +41,7 @@ bot.command('power', 'Returns the power of a number to the other. Usage /power [
     message.reply(Math.pow(args[0], args[1]));
 });
 
-bot.command('antilog', 'Returns the antilog of a number. Usage /antilog [num]', false, (args, message) => {
+bot.command('antilog', 'Returns a number to the power of ten. Usage /antilog [num]', false, (args, message) => {
     message.reply(Math.pow(10, args[0]));
 });
 
