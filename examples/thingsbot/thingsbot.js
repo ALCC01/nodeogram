@@ -3,7 +3,7 @@ const nodeogram = require('../../index'),
     Bot = nodeogram.Bot,
     InlineQueryResultArticle = nodeogram.InlineQueryResultArticle;
 
-bot = new Bot(config.token);
+bot = new Bot(config.token, {profiles_path: __dirname + '/profiles.json', enableHelp: false});
 bot.init();
 
 function search(query, limit) {
@@ -332,11 +332,12 @@ bot.on('message', (message) => {
                 var keyboard = new nodeogram.Keyboard();
                 results.forEach((result) => {
                     list += `${i}\u20E3 *${result.label}* - ${result.is}\n`;
-                    keyboard.addButton(0, i - 1, {text: "" + i, callback_data: result.id});
+                    var row = i > 8 ? 1 : 0;
+                    keyboard.addButton(row, row == 0 ? i - 1 : i - 9, {text: "" + i, callback_data: result.id});
                     i++;
                 });
                 keyboard.toInline();
-                message.reply(list, {reply_markup: keyboard, parse_mode: 'Markdown'})
+                message.reply(list, {reply_markup: keyboard, parse_mode: 'Markdown'});
                 console.timeEnd(message.message_id);
             }
         })

@@ -1,11 +1,9 @@
-console.log()
-
-const nodeogram = require('nodeogram'),      
+const nodeogram = require('nodeogram'),
 bot = new nodeogram.Bot('TOKEN');
 
 bot.init();
 
-bot.command('start', 'Start', false, (args, message, markup) => {
+bot.command('start', 'Start', false, (args, message) => {
     message.reply("Hi, i am simple calculator bot. send me /help to view a list of commands!");
 });
 
