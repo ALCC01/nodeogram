@@ -2,6 +2,7 @@
 
 Dev: Mohammed Sohail
 Version: 1.1.0
+Demo: @powercalcbot
 
 */
 

@@ -1,7 +1,7 @@
 {
   "name": "powercalcbot",
   "version": "1.0.0",
-  "description": "A Multi-Functional Telegram Calculator Bot",
+  "description": "A Multi-Functional Telegram Calculator Bot. Demo @powercalcbot",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
