@@ -1,0 +1,19 @@
+{
+  "name": "powercalcbot",
+  "version": "1.0.0",
+  "description": "A Multi-Functional Telegram Calculator Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/kamikazechaser/NodeogramBots"
+  },
+  "author": "Mohammed Sohail",
+  "license": "MIT",
+  "dependencies": {
+    "mathjs": "^3.2.1",
+    "nodeogram": "0.0.3"
+  }
+}
