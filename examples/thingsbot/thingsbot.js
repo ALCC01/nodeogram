@@ -123,6 +123,16 @@ function statements(data) {
         if (claims.P1590) data._statements.casualties = claims.P1590[0].mainsnak.datavalue.value.amount;
         if (claims.P580) data._statements.start = date(claims.P580[0].mainsnak.datavalue.value.time);
         if (claims.P582) data._statements.end = date(claims.P582[0].mainsnak.datavalue.value.time);
+        if (claims.P585) data._statements.time = date(claims.P585[0].mainsnak.datavalue.value.time);
+        if (claims.P1867) data._statements.voters = claims.P1867[0].mainsnak.datavalue.value.amount;
+        if (claims.P1868) data._statements.ballots = claims.P1868[0].mainsnak.datavalue.value.amount;
+        if (claims.P1346) data._statements.winner = claims.P1346[0].mainsnak.datavalue.value["numeric-id"];
+        if (claims.P991) data._statements.winner_candidate = claims.P991;
+        if (claims.P726) data._statements.candidates = claims.P726;
+        if (claims.P2002) data._statements.twitter = claims.P2002[0].mainsnak.datavalue.value;
+        if (claims.P2003) data._statements.instagram = claims.P2003[0].mainsnak.datavalue.value;
+        if (claims.P2013) data._statements.facebook = claims.P2003[0].mainsnak.datavalue.value;
+        if (claims.P2847) data._statements.plus = claims.P2847[0].mainsnak.datavalue.value;
 
 
     } catch (err) {
@@ -257,8 +267,17 @@ function message(data) {
         if (data._statements.casualties) text += `*${data._statements.casualties}* casualties\n`;
         if (data._statements.start) text += `Beginning date: *${data._statements.start}*\n`;
         if (data._statements.end) text += `Ending date: *${data._statements.end}*\n`;
+        if (data._statements.time) text += `Date: *${data._statements.time}*\n`;
+        if (data._statements.voters) text += `*${data._statements.voters}* eligible voters\n`;
+        if (data._statements.ballots) text += `*${data._statements.ballots}* ballots cast\n`;
+        if (data._statements.candidates) text += `Candidates: *${data._statements.candidates.join(", ")}*\n`;
+        if (data._statements.winner) text += `Winner: *${data._statements.winner}*\n`;
+        if (data._statements.winner_candidate) text += `Successful candidate(s): *${data._statements.winner_candidate.join(", ")}*\n`;
 
-
+        if (data._statements.twitter) text += `📘  [Facebook profile](http://facebook.com/${data._statements.twitter})\n`;
+        if (data._statements.plus) text += `➕  [${data._statements.plus}](http://plus.google.com/${data._statements.plus}) on Google+\n`;
+        if (data._statements.twitter) text += `🐦  [@${data._statements.twitter}](http://twitter.com/${data._statements.twitter}) on Twitter\n`;
+        if (data._statements.instagram) text += `📷  [${data._statements.instagram}](http://instagram.com/${data._statements.instagram}) on Instagram\n`;
         if (data._statements.streaming) text += `📡 [Available via streaming](${data._statements.streaming})\n`;
         if (data._statements.stackexchange) text += `☝ [StackExchange Tag](${data._statements.stackexchange})\n`;
         if (data._statements.bugs) text += `🐛 [Bug Tracking](${data._statements.bugs})\n`;

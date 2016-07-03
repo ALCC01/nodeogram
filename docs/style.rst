@@ -25,6 +25,20 @@ Nodeogram's functions can fail at any time - querying the API, attempting to sen
 bot was kicked out, etc - and not handling errors properly might result in unexpected behaviours or worse - getting
 your bot or IP address tempbanned from Telegram's server could really ruin your day.
 
+*******
+Parsing
+*******
+
+This documentation **does not feature any attribute that is also made available by the upstream Telegram API**. Please refer
+to the `Telegram documentation <https://core.telegram.org/bots/api>`_ if you need information about them.
+
+.. note::
+
+    This object inherits some properties from the corresponding `Telegram object <https://core.telegram.org/bots/api>`_.
+
+If an object's documentation features this note, it means that some of its attributes were parsed from the original API
+into a Nodeogram object. This applies to pretty much any of the library's objects.
+
 ==============
 Best practices
 ==============
