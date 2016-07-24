@@ -15,7 +15,7 @@ This object represents a Telegram callback query.
 
 Creates a new CallbackQuery object.
 
-.. js:function:: answerCallbackQuery(text, alert)
+.. js:function:: answer(text, alert)
 
     :param string text:
     :param boolean alert: Whether the user should be shown an alert

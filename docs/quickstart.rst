@@ -71,7 +71,7 @@ chat) as an argument.
 
 .. warning::
 
-    A ``message`` event will be emitted even if a command or a service message event is triggered! Make sure
+    A ``message`` event will be emitted even if a service message event is triggered! Make sure
     to not produce unintended behaviors
 
 ********
@@ -324,3 +324,41 @@ its profile management interface. If a bot is instantiated with ``profiles_path`
 basic information about any user and chat he will become aware of.
 
 The ``broadcast()`` function will enable you to easily access that data and interact with your users.
+
+=====
+Forms
+=====
+
+Nodeogram enables you to ask your users questions and receive responses in an ordinated fashion. Creating a form for a user
+will make the bot ignore any event for his chat until he answers every question. Once every question is answered, answers
+are returned to you via a callback. Nodeogram also makes sure that the answers provided are acceptable for you bot, checking
+if they match a regular expression (regex).
+
+.. code-block:: javascript
+
+    bot.form(message.from, {
+        name: {
+            message: {
+                text: 'Please enter your name',
+                options: {}
+            },
+            regex: /([A-Z]){1,20}/,
+            error: {
+                text: 'Your name must be between 1 and 20 letters long and must contain only letters',
+                options: {}
+            }
+        },
+        surname: {
+            message: {
+                text: 'Please enter your surname',
+                options: {}
+            },
+            regex: /([A-Z]){1,20}/,
+            error: {
+                text: 'Your surname must be between 1 and 20 letters long and must contain only letters',
+                options: {}
+            }
+        }
+    }, (result) => {
+        message.from.sendMessage(`Your name is ${result.name} ${result.surname}`)
+    })

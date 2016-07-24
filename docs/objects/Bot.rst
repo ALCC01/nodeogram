@@ -238,3 +238,40 @@ This object represents a Telegram bot.
     :param function callback: A function to which is provided a single argument, a promise that resolves to a :doc:`Chat` object.
 
     Iterates a function through all of chats stored in the profiles storage.
+
+.. js:function:: form(user_id, object, callback)
+
+    :param string user_id: Can also be a :doc:`Chat` or a :doc:`User` object. **It must be a private chat!**
+    :param object object: The form object (see below).
+    :param function callback: A function that accept one argument
+
+    Creates a form for a user. The ``object`` argument must follow this format:
+
+    .. code-block:: javascript
+
+        {name: {
+            message: {
+                text: 'Please enter your name',
+                options: {}
+            },
+            regex: /([A-Z]){1,20}/,
+            error: {
+                text: 'Your name must be between 1 and 20 letters long and must contain only letters',
+                options: {}
+            }
+        },
+        surname: {
+            message: {
+                text: 'Please enter your surname',
+                options: {}
+            },
+            regex: /([A-Z]){1,20}/,
+            error: {
+                text: 'Your surname must be between 1 and 20 letters long and must contain only letters',
+                options: {}
+            }
+        }
+
+.. js:function:: removeForm(user_id)
+
+    :param string user_id: Can also be a :doc:`Chat` or a :doc:`User` object. **It must be a private chat!**
