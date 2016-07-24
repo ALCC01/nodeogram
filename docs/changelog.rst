@@ -32,7 +32,7 @@ Nodeogram 0.0.3
 * Commands can now be hidden from the default /help command
 
 ===============
-Nodeogram 0.0.3
+Nodeogram 0.0.4
 ===============
 
 * Forms: ask questions to your users the easy way
