@@ -85,3 +85,6 @@ tests/
 
 # Documentation
 docs/
+
+# Examples
+examples/

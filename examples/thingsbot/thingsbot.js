@@ -1,4 +1,4 @@
-const nodeogram = require('../../index'),
+const nodeogram = require('nodeogram'),
     config = require('./config.json'),
     Bot = nodeogram.Bot,
     InlineQueryResultArticle = nodeogram.InlineQueryResultArticle;
@@ -424,7 +424,7 @@ Wisdom is a *property*
     }
 });
 
-bot.command('start', 'Start this bot', (args, message) => {
+bot.command('start', 'Start this bot', true, (args, message) => {
     message.reply(`Hi there, I'm ThingsBot.
 
 I can search things for you in the structured data universe. I'm powered by the magic of Wikidata, a project of the Wikimedia Foundation (the guys from Wikipedia) that provides free structured data under CC0.

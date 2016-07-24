@@ -4,11 +4,13 @@
   "description": "",
   "main": "thingsbot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node thingsbot.js"
   },
   "author": "Alberto Coscia",
   "license": "GPL-3.0",
   "dependencies": {
+    "nodeogram": "0.0.3",
     "superagent": "^1.8.3"
   }
 }

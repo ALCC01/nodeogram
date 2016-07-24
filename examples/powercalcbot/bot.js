@@ -1,18 +1,19 @@
 /* A Lightning Fast Multi-Purpose Calculator Bot.
 
-Dev: Mohammed Sohail
-Version: 1.1.0
-Demo: @powercalcbot
+ Dev: Mohammed Sohail
+ Version: 1.1.0
+ Demo: @powercalcbot
 
-*/
+ */
 
 const nodeogram = require('nodeogram'),
-bot = new nodeogram.Bot('token');
+    config = require('./config.json'),
+    bot = new nodeogram.Bot(config.token);
 const math = require('mathjs');
 const Keyboard = nodeogram.Keyboard;
 
 var math2 = math.create({
-  matrix: 'Array'       
+    matrix: 'Array'
 });
 
 bot.init();
@@ -57,7 +58,7 @@ bot.command('tan', 'Returns the tangent of an angle. Usage /tan [num]', false, (
 });
 
 bot.command('sin', 'Returns the sine of an angle. Usage /sin [num]', false, (args, message) => {
-    message.reply(Math.sin(args[0]/180*Math.PI)); 
+    message.reply(Math.sin(args[0]/180*Math.PI));
 });
 
 bot.command('cos', 'Returns the cosine of an angle. Usage /cos [num]', false, (args, message) => {
