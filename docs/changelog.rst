@@ -30,3 +30,11 @@ Nodeogram 0.0.3
     * You can broadcast to saved chats and users
 
 * Commands can now be hidden from the default /help command
+
+===============
+Nodeogram 0.0.3
+===============
+
+* Forms: ask questions to your users the easy way
+* Commands are now invoked only if ``/`` is the first character of the message
+* The ``message`` event is no longer fired if the message triggers a command
