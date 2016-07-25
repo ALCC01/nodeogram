@@ -109,7 +109,7 @@ function updateUser(user, id) {
     get(`https://api.reddit.com/live/${id}/about.json`, {})
         .then(res => {
             var thread = parseThread(res),
-                message = `*${thread.title}*\n_${thread.description}_\n\n${thread.online ? '📡 Online' : '🔇 Offline'} ${thread.nsfw ? '🔞 NSFW' : '✅ SFW'} ${thread.viewer_count ? '👥 ' + thread.viewer_count + ' viewers' : ''}\n📅 ${new Date(thread.created_utc * 1000).toUTCString()}\n\n🌐 https://reddit.com/live/${thread.id} 🆔 \`${thread.id}\``;
+                message = `*${thread.title}*\n_${thread.description}_\n\n${thread.online ? '📡 Online' : '🔇 Offline'}\n${thread.nsfw ? '🔞 NSFW' : '✅ SFW'}\n${thread.viewer_count ? '👥 ' + thread.viewer_count + ' viewers' : ''}\n📅 ${new Date(thread.created_utc * 1000).toUTCString()}\n\n🌐 https://reddit.com/live/${thread.id}\n🆔 \`${thread.id}\``;
             user.sendMessage(message, {
                 parse_mode: 'Markdown',
                 disable_web_page_preview: true
