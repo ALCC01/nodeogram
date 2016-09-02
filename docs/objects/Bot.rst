@@ -27,7 +27,14 @@ This object represents a Telegram bot.
             // Whether or not chats should be saved
             saveChats: true,
             // Whether or not the /help command should be registered by default
-            enableHelp: true
+            enableHelp: true,
+            // This will cause the bot to listen for updates instead of fetching them
+            useWebhooks: false,
+            webhookRoute: '/',
+            webhookPort: 8080,
+            webhookFunction: (req, res) => {...},
+            // Should the bot automatically fetch/listen for updates?
+            autoFetch: true
         }
 
 .. _init:
@@ -40,6 +47,13 @@ This object represents a Telegram bot.
     Retrieves updates for the bot from the Telegram API and processes them. This function is called by :ref:`init` and
     shouldn't be called manually. The first call made by the bot will be with a -1 offset that will erase any backlog updates.
     Updates older than 2 seconds are also ignored. Updates are retrieved 100 at a time, with a 30 seconds timeout.
+
+.. js:function:: handleUpdates(updates)
+
+    :param array updates: An array of Update objects
+
+    Handles the provided updates. This method is mainly used by the bot itself, but you may need to use it if you
+    turn off the automatic fetching (``autoFetch: false``)
 
 .. js:function:: command(command, description, hidden, callback)
 

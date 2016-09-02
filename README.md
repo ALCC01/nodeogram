@@ -6,6 +6,7 @@ Nodeogram is a simple yet complete Node.JS module for Telegram bots.
 * **Complete**. Nodeogram features all of the most recent API updates and is designed not to block you from using right away the not yet implemented ones
 * **Promises**. The entire library is promise-based
 * **Event based**. Nodeogram provides an event-based handling of updates, allowing you to interact more easily with messages, commands, callback and inline queries.
+* **Webhooks**. Don't want to fetch updates? No problem, just start hosting a webhook! Don't like webhooks either? You can still provide updates manually!
 
 Nodeogram is an open-source project available on [GitHub](https://github.com/ALCC01/nodeogram) and [npm](https://www.npmjs.com/package/nodeogram).
 
@@ -24,7 +25,34 @@ const nodeogram = require('nodeogram'),
 bot = new nodeogram.Bot('your-token-goes-here');
 
 bot.init();
-bot.on('message', message => message.reply("Hello World!"));
+
+bot.on('message', message => {
+    var keyboard = new Keyboard([], {one_time_keyboard: true});
+    keyboard.addButton(0, 0, "Girl");
+    keyboard.addButton(0, 1, "Boy");
+
+    message.reply("Are you a boy? Or ar you a girl?", {reply_markup: keyboard});
+});
+
+bot.command('echo', 'Echoes your voice', false, (args, message) => {
+    if (args[0] != '') message.reply(args.join(' '), {});
+});
+
+bot.on('inline_query', (query) => {
+    query.answer([new nodeogram.InlineQueryResultArticle(
+        'id',
+        'Here\'s an article',
+        {
+            message_text: 'This is the message that will be sent'
+        },
+        {
+            description: 'This is the description'
+        }
+    )])
+});
+
+// There's more, just check out the documentation!
+
 ```
 
 And you are done. You can see more extensive examples in the [library overview](https://dev.albertocoscia.me/nodeogram/quickstart.html)

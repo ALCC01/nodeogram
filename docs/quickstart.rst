@@ -52,6 +52,47 @@ functionalities to the bot in order to make it actually useful.
     updates it sends a request with a -1 offset, erasing all the available updates.
 
 =================
+Receiving updates
+=================
+
+Nodeogram fully supports both receiving updates by making requests to the Telegram API and by hosting a webhook. If you
+get updates from anywhere else, there's no problem, you can just disable the automatic fetching of updates.
+
+By default Nodeogram automatically fetches updates from the Telegram API, but you can easily start receiving updates from
+a webhook!
+
+.. code-block:: javascript
+    :linenos:
+
+    const bot = new nodeogram.Bot('TOKEN-HERE', {
+        // Enable webhooks
+        useWebhooks: true,
+        // Defaults to /
+        webhookRoute: '/mywebhook',
+        // Defaults to 8080
+        webhookPort: 8081,
+        // Completely optional
+        webhookFunction: (req, res) => {
+            bot.handleUpdates([req.body]);
+            res.send({});
+        }
+    });
+
+If you don't like the automatic handling of the updates or want to implement some dark wizardry stuff, you can provide
+the updates manually.
+
+.. code-block:: javascript
+    :linenos:
+
+    const bot = new nodeogram.Bot('TOKEN-HERE', {
+        // Will ignore both update fetching and webhooks
+        autoFetch: false
+    });
+
+    bot.handleUpdates([an_update]);
+
+
+=================
 Handling messages
 =================
 

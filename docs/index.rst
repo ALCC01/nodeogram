@@ -11,6 +11,7 @@ Features
 * **Complete**. Nodeogram features all of the most recent API updates and is designed not to block you from using right away the not yet implemented ones
 * **Promises**. The entire library is promise-based
 * **Event based**. Nodeogram provides an event-based handling of updates, allowing you to interact more easily with messages, commands, callback and inline queries.
+* **Webhooks**. Don't want to fetch updates? No problem, just start hosting a webhook! Don't like webhooks either? You can still provide updates manually!
 * Nodeogram is an open-source project available on `GitHub <https://github.com/ALCC01/nodeogram>`_ and `npm <https://www.npmjs.com/package/nodeogram>`_.
 
 ===============
