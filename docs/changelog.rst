@@ -38,3 +38,11 @@ Nodeogram 0.0.4
 * Forms: ask questions to your users the easy way
 * Commands are now invoked only if ``/`` is the first character of the message
 * The ``message`` event is no longer fired if the message triggers a command
+
+===============
+Nodeogram 0.0.5
+===============
+
+* Added support for webhooks
+* It is now possible to disable the automatic fetching of updates
+* It is now possible to manually provide updates to the bot
