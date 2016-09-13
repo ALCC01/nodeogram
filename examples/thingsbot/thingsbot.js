@@ -3,7 +3,7 @@ const nodeogram = require('nodeogram'),
     Bot = nodeogram.Bot,
     InlineQueryResultArticle = nodeogram.InlineQueryResultArticle;
 
-bot = new Bot(config.token, {profiles_path: __dirname + '/profiles.json', enableHelp: false});
+bot = new Bot(config.token, {profiles_path: __dirname + '/profiles.json', enableHelp: false, useWebhooks: config.useWebhooks, webhookPort: config.webhookPort, webhookRoute: config.webhookRoute});
 bot.init();
 
 function search(query, limit) {
