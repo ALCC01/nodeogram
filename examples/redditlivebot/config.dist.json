@@ -1,3 +1,6 @@
 {
-  "token": "SOMETHING"
+  "token": "SOMETHING",
+  "useWebhooks": true,
+  "webhookPort": 8080,
+  "webhookRoute": "/"
 }

@@ -2,7 +2,7 @@
 const nodeogram = require('nodeogram'),
     WebSocketClient = require('websocket').client,
     config = require('./config.json'),
-    bot = new nodeogram.Bot(config.token, {profiles_path: __dirname + '/profiles.json', enableHelp: true}),
+    bot = new nodeogram.Bot(config.token, {profiles_path: __dirname + '/profiles.json', enableHelp: true, useWebhooks: config.useWebhooks, webhookPort: config.webhookPort, webhookRoute: config.webhookRoute}),
     request = require('superagent-promise')(require('superagent'), Promise);
 
 var threads = {}, // thread_id: [user_id, ...]
