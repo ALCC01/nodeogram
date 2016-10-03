@@ -91,3 +91,9 @@ the objects' properties are directly inherited from the upstream Telegram API.
     :param string voice_url:
     :param string title:
     :param object options: *Optional*.
+
+.. js:class:: InlineQueryResultGame(id, game_short_name[, options])
+
+    :param string id:
+    :param string game_short_name:
+    :param object options: *Optional*.

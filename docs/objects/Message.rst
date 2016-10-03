@@ -57,6 +57,24 @@ Creates a new Message object.
 
     Updates the specified message markup.
 
+.. js:function:: setGameScore(user_id, score, inline[, options])
+
+    :param string user_id: Can also be a :doc:`User` object
+    :param number score:
+    :param boolean inline: Is the message an inline one?
+    :param object options:
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one or if the request did not instruct Telegram to edit the original message.
+
+    Sets a user's score for a game.
+
+.. js:function:: getGameHighScores(user_id, inline)
+
+    :param string user_id: Can also be a :doc:`User` object
+    :param boolean inline: Is the message an inline one?
+    :returns: A promise that resolves to an array of :doc:`GameHighScore` objects.
+
+    Returns information about the user's rank and score for a game.
+
 .. js:attribute:: Message.commands
 
     Array of objects, each one representing a command in the message.

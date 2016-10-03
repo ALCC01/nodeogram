@@ -76,14 +76,17 @@ Nodeogram is released under the GNU General Public License 3.0.
     :caption: Objects
     :glob:
 
+    objects/Animation
     objects/Bot
-    objects/Chat
-    objects/User
-    objects/Message
-    objects/Keyboard
     objects/CallbackQuery
-    objects/ChosenInlineResult
+    objects/Chat
     objects/ChatMember
+    objects/ChosenInlineResult
     objects/File
+    objects/Game
+    objects/GameHighScore
     objects/InlineQuery
+    objects/Keyboard
+    objects/Message
+    objects/User
     objects/UserProfilePhotos

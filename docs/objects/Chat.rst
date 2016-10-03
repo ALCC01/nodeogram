@@ -58,6 +58,14 @@ Creates a new Chat object.
 
     Sends a contact object to the chat.
 
+.. js:function:: sendGame (game_short_name[, options])
+
+    :param string game_short_name: The Telegram game identifier.
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
+
+    Sends a Telegram game to the chat.
+
 .. js:function:: forwardMessage(from_chat_id, message_id[, options])
 
     :param string from_chat_id:

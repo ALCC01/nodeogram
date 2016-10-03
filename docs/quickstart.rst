@@ -403,3 +403,10 @@ if they match a regular expression (regex).
     }, (result) => {
         message.from.sendMessage(`Your name is ${result.name} ${result.surname}`)
     })
+
+=========
+Debugging
+=========
+
+Your bot is not behaving like it should be? Some extra information about the inner processes of the library may help! Try
+starting your bot by setting the environment variable ``NODEOGRAM_DEBUG`` to true or set ``debug`` to true in the bot options.

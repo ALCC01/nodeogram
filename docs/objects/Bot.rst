@@ -34,7 +34,8 @@ This object represents a Telegram bot.
             webhookPort: 8080,
             webhookFunction: (req, res) => {...},
             // Should the bot automatically fetch/listen for updates?
-            autoFetch: true
+            autoFetch: true,
+            debug: false
         }
 
 .. _init:
@@ -117,8 +118,15 @@ This object represents a Telegram bot.
     :param object options: *Optional*
     :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
 
-
     Sends a contact object to the specified chat.
+
+.. js:function:: sendGame(chat_id, game_short_name[, options])
+
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :param string game_short_name: The Telegram identifier for the game
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
+
+    Sends a game to the specified chat.
 
 .. js:function:: forwardMessage(chat_id, from_chat_id, message_id[, options])
 
@@ -130,11 +138,10 @@ This object represents a Telegram bot.
 
     Forwards a message to the specified chat,
 
-.. js:function:: answerCallbackQuery(id, text, alert)
+.. js:function:: answerCallbackQuery(id, options)
 
     :param string id:
-    :param string text:
-    :param boolean alert: Whether the user should be shown an alert
+    :param object options: **Not optional**
     :returns: A promise that resolves to the response (according to Telegram, true on success).
 
     Answers a callback query.
@@ -206,6 +213,28 @@ This object represents a Telegram bot.
     :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one.
 
     Updates the specified message markup in the specified chat.
+
+.. js:function:: setGameScore(id, user_id, score, inline, options, chat_id)
+
+    :param string id: The message id
+    :param string user_id: Can also be a :doc:`User` object
+    :param number score:
+    :param boolean inline: Is the message an inline one?
+    :param object options:
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :returns: A promise that resolves to a :doc:`Message` object representing the updated message. True is returned by the promise if the message is an inline one or if the request did not instruct Telegram to edit the original message.
+
+    Sets a user's score for a game.
+
+.. js:function:: getGameHighScores(id, user_id, inline, chat_id)
+
+    :param string id: The message id
+    :param string user_id: Can also be a :doc:`User` object
+    :param boolean inline: Is the message an inline one?
+    :param string chat_id: Can also be a :doc:`Chat` or a :doc:`User` object
+    :returns: A promise that resolves to an array of :doc:`GameHighScore` objects.
+
+    Returns information about the user's rank and score for a game.
 
 .. js:function:: getChatAdministrators (chat_id)
 

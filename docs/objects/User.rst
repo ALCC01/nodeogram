@@ -77,6 +77,14 @@ Creates a new User object.
     :param string action: <String> Must be one of the following: ``typing``, ``upload_photo``, ``record_video``, ``upload_video``, ``record_audio``, ``upload_audio``, ``upload_document``, ``find_location``
     :returns: A promise that resolves to the response (true on success).
 
+.. js:function:: sendGame (game_short_name[, options])
+
+    :param string game_short_name: The Telegram game identifier.
+    :param object options: *Optional*
+    :returns: A promise that resolves to a :doc:`Message` object representing what has been sent.
+
+    Sends a Telegram game to the user.
+
 .. js:function:: getProfilePhotos(options)
 
     :param object options: *Optional*
