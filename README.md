@@ -1,4 +1,4 @@
-# Nodeogram
+# Nodeogram ![](https://img.shields.io/npm/v/nodeogram.svg)
 Nodeogram is a simple yet complete Node.JS module for Telegram bots.
 
 ## Features

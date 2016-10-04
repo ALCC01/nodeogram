@@ -370,7 +370,7 @@ bot.on('callback_query', (query) => {
         .then((data) => {
             var msg = message(data);
             query.message.editText(msg, false, {parse_mode: 'Markdown', disable_web_page_preview: true});
-            query.answer("👍 Alright, got it!", true);
+            query.answer({text: "👍 Alright, got it!", alert: true});
             console.timeEnd(query.id)
         })
     )

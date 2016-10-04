@@ -64,17 +64,16 @@ bot.command('unfollow', 'Stop following a thread', false, (args, message) => {
 
 bot.on('callback_query', (query) => {
     var data = JSON.parse(query.data);
-    console.log(query);
     if (data.action === 'follow') {
         if (query.message) {
-            updateUser(query.message.chat, data.id)
-            query.answer('👍 Got it!')
+            updateUser(query.message.chat, data.id);
+            query.answer({text: '👍 Got it!'})
         }
     }
     if (data.action === 'unfollow') {
         if (query.message) {
-            unfollow(query.message.chat, data.id)
-            query.answer('👍 Got it!')
+            unfollow(query.message.chat, data.id);
+            query.answer({text: '👍 Got it!'})
         }
     }
 });
@@ -181,7 +180,6 @@ function createClient(id, thread) {
         });
 
         connection.on('message', message => {
-            console.log(message);
             if (message.type === 'utf8') {
                 message = JSON.parse(message.utf8Data);
                 switch (message.type) {

@@ -10,7 +10,7 @@
   "author": "Alberto Coscia",
   "license": "GPL-3.0",
   "dependencies": {
-    "nodeogram": "0.0.5",
+    "nodeogram": "0.0.6",
     "superagent": "^2.1.0",
     "superagent-promise": "^1.1.0",
     "websocket": "^1.0.23"
