@@ -65,3 +65,9 @@ Nodeogram 0.0.6
 * Implemented debug logging
 
     * Can be activated either by passing ``debug: true`` to the bot or using the ``NODEOGRAM_DEBUG`` environment variable
+
+===============
+Nodeogram 0.0.7
+===============
+
+* Added support for the Telegram Bot API v2.3

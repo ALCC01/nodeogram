@@ -43,6 +43,30 @@ This object represents a Telegram bot.
 
     Starts fetching updates for the bot.
 
+.. js:function:: on(event, listener)
+
+    :param string event: An event name
+    :param function listener:
+
+    Supported events are:
+
+    * ``message``
+    * ``callback_query``
+    * ``edited_message``
+    * ``chosen_inline_result``
+    * ``channel_post``
+    * ``edited_channel_post``
+    * ``inline_query``
+    * ``new_chat_title``
+    * ``new_chat_photo``
+    * ``delete_chat_photo``
+    * ``group_chat_created``
+    * ``supergroup_chat_created``
+    * ``channel_chat_created``
+    * ``migrate_to_chat_id``
+    * ``migrate_from_chat_id``
+    * ``pinned_message``
+
 .. js:function:: getUpdates()
 
     Retrieves updates for the bot from the Telegram API and processes them. This function is called by :ref:`init` and
