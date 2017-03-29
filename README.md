@@ -27,7 +27,7 @@ bot = new nodeogram.Bot('your-token-goes-here');
 bot.init();
 
 bot.on('message', message => {
-    var keyboard = new Keyboard([], {one_time_keyboard: true});
+    var keyboard = new nodeogram.Keyboard([], {one_time_keyboard: true});
     keyboard.addButton(0, 0, "Girl");
     keyboard.addButton(0, 1, "Boy");
 
